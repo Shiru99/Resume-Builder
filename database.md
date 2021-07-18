@@ -43,10 +43,11 @@ resumebuilder=> CREATE TABLE users (
 
 ***Insert New Table-entries***
 ```
-resumebuilder=> INSERT INTO users VALUES (1, 'John Doe' , '1234', true, 'ROLE_ADMIN');
-resumebuilder=> INSERT INTO users VALUES (2, 'Jenny Doe' , '1234', True, 'ROLE_USER');
-resumebuilder=> INSERT INTO users VALUES (3, 'James Doe' , '1234', True, 'ROLE_USER');
-
+resumebuilder=> INSERT INTO users (id,username,password,active,roles) 
+                  VALUES  
+                     (1, 'John Doe' , '1234', 'true', 'ROLE_USER'),
+                     (2, 'Jenny Doe' , '1234', 'true', 'ROLE_USER'),
+                     (3, 'James Doe' , '1234', 'true', 'ROLE_USER');
 ```
 
 ***List of Tables***
