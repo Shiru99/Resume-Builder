@@ -11,13 +11,8 @@ public class HomeController {
         return "<h1>Welcome to Resume-Builder</h1>";
     }
 
-    @RequestMapping("/admin")
+    @RequestMapping("/edit")
     public String sayWelcomeAdmin() {
-        return "<h1>Welcome to Resume-Builder, Admin</h1>";
-    }
-
-    @RequestMapping("/user")
-    public String sayWelcomeUser() {
-        return "<h1>Welcome to Resume-Builder, User</h1>";
+        return "<h1>Welcome to Resume-Builder, Resume-Owner</h1>";
     }
 }
