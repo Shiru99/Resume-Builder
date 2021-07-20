@@ -5,3 +5,10 @@ CREATE TABLE users (
    active BOOLEAN NOT NULL,
    roles VARCHAR(50)
 );
+
+CREATE TABLE userprofile (
+   id   INT     PRIMARY KEY     NOT NULL,
+   theme INT NOT NULL,
+   username VARCHAR(50) UNIQUE NOT NULL,
+   summary VARCHAR(500)
+);
