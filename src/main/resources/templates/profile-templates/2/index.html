@@ -2,8 +2,7 @@
 <html xmlns:th="https://www.thymeleaf.org">
 
 <head>
-    <title>Template 2</title>
-
+	<title th:text="${userProfile.getFirstName()}+' '+${userProfile.getLastName()} +' - '+ ${userProfile.getJobTitle()}"> [Title]</title>
     <meta http-equiv="Content-Type" content="text/html" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content="Resume Template 2" />
@@ -14,8 +13,7 @@
 
 <body>
     <div id="page-wrap">
-        <!-- TODO : profile-pic -->
-        <img src="../profile-templates/profile-pic.png" alt="profile pic" id="pic" />
+        <img id="pic" th:src="${userProfile.getProfilePic() == null || userProfile.getProfilePic().trim() == ''}? '../profile-templates/profile-pic.png' : ${userProfile.getProfilePic()}" alt="profile pic" />
 
         <div id="contact-info" class="vcard">
             <h1 class="fn" th:text="${userProfile.getFirstName()}+' '+${userProfile.getLastName()}">
@@ -39,18 +37,11 @@
             </p>
         </div>
 
-
-
-
-
         <div class="clear"></div>
-
-
         <dl>
             <br>
             <dt>Experience</dt>
             <dd th:each="experience : ${userProfile.getUserExperiences()}">
-
                 <h2 th:text="${experience.getPosition()}">[Position]</h2>
                 <h2>
                     <span
@@ -86,8 +77,7 @@
                 <h2 th:text="${project.getProjectName()}">[Project Name]</h2>
                 <span th:text="${project.getTools()}">[Tools used]</span>
                 <h2>
-                    <span
-                        th:text="${project.formattedStartDate()}+' - '+ ${project.formattedEndDate()}">
+                    <span th:text="${project.formattedStartDate()}+' - '+ ${project.formattedEndDate()}">
                         [Start Date - End Date]
                     </span>
                 </h2>
@@ -101,16 +91,14 @@
             <dd class="clear"></dd>
             <dt>Skills</dt>
             <dd>
-                <h2>Office skills</h2>
-                <p> Office and records management, database administration, event organization, customer support, travel coordination</p>
-                <h2>Computer skills</h2>
-                <p> Microsoft productivity software (Word, Excel, etc), Adobe Creative Suite, Windows </p>
+                <span th:each="i : ${#numbers.sequence(0, 2)}">
+                    <ul class="skills">
+                        <div th:each="skill, index : ${userProfile.getUserSkills()}" th:unless="${(index.index-i) % 3}">
+                            <li th:text="${skill.getSkillName()}">[Skill Name]</li>
+                        </div>
+                    </ul>
+                </span>
             </dd>
-            
-
-           
-            
-            
             <br>
 
         </dl>

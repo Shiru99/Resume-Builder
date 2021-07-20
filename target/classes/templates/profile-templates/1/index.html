@@ -2,8 +2,7 @@
 <html xmlns:th="https://www.thymeleaf.org">
 
 <head>
-	<title>Template 1</title>
-
+	<title th:text="${userProfile.getFirstName()}+' '+${userProfile.getLastName()} +' - '+ ${userProfile.getJobTitle()}"> [Title]</title>
 	<meta name="viewport" content="width=device-width" />
 	<meta name="description" content="Resume Template 1" />
 	<meta charset="UTF-8" />
@@ -16,8 +15,8 @@
 	<div id="cv" class="instaFade">
 		<div class="mainDetails">
 			<div id="headshot" class="quickFade">
-				<!-- TODO : profile-pic -->
-				<img src="../profile-templates/profile-pic.png" alt="profile pic" />
+			
+				<img th:src="${userProfile.getProfilePic() == null || userProfile.getProfilePic().trim() == ''}? '../profile-templates/profile-pic.png' : ${userProfile.getProfilePic()}" alt="profile pic" />
 			</div>
 
 			<div id="name">
@@ -82,7 +81,8 @@
 						<p class="subDetails">
 							<span th:text="${experience.formattedStartDate()}">[Start Date]</span>
 							-
-							<span th:text="${experience.isCurrentJob()}? 'Present' : ${experience.formattedEndDate()}">[End
+							<span
+								th:text="${experience.isCurrentJob()}? 'Present' : ${experience.formattedEndDate()}">[End
 								Date]</span>
 						</p>
 
@@ -102,17 +102,16 @@
 				</div>
 
 				<div class="sectionContent">
-					<ul class="keySkills">
-						<li>A Key Skill</li>
-						<li>A Key Skill</li>
-						<li>A Key Skill</li>
-						<li>A Key Skill</li>
-						<li>A Key Skill</li>
-						<li>A Key Skill</li>
-						<li>A Key Skill</li>
-						<li>A Key Skill</li>
-					</ul>
+					<span th:each="i : ${#numbers.sequence(0, 2)}">
+						<ul class="skills">
+							<div th:each="skill, index : ${userProfile.getUserSkills()}"
+								th:unless="${(index.index-i) % 3}">
+								<li th:text="${skill.getSkillName()}">[Skill Name]</li>
+							</div>
+						</ul>
+					</span>
 				</div>
+
 				<div class="clear"></div>
 			</section>
 

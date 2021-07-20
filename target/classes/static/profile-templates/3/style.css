@@ -186,11 +186,11 @@ a#pdf:hover {
   margin-bottom: -2px;
   padding: 0;
 }
-.talent {
+.skills {
   width: 32%;
   float: left;
 }
-.talent h2 {
+.skills h2 {
   margin-bottom: 6px;
 }
 
@@ -241,4 +241,8 @@ a#pdf:hover {
   width: 25%;
   padding: 0%;
   margin: 0%;
+}
+
+#pic {
+  /* border-radius: 50px; */
 }
