@@ -5,8 +5,12 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -25,6 +29,15 @@ public class UserProfile {
     private String website;
     private String phoneNum;
     private String summary;
+    private String profilePic;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "user_skills",
+        joinColumns = @JoinColumn(name="user_id"),
+        inverseJoinColumns = @JoinColumn(name = "skill_id")
+    )
+    private List<UserSkill> userSkills = new ArrayList<UserSkill>();
 
     @OneToMany(
         mappedBy = "userProfile",
@@ -69,6 +82,26 @@ public class UserProfile {
 
     public void setTheme(int theme) {
         this.theme = theme;
+    }
+
+    public String getProfilePic() {
+        return profilePic;
+    }
+
+    public void setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
+    }
+
+    public List<UserSkill> getUserSkills() {
+        return userSkills;
+    }
+
+    public void setUserSkills(List<UserSkill> userSkills) {
+        this.userSkills = userSkills;
+    }
+
+    public void addUserSkills(UserSkill userSkill) {
+        this.userSkills.add(userSkill);
     }
 
     public String getUserName() {
