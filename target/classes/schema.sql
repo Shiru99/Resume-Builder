@@ -28,6 +28,7 @@ CREATE TABLE user_education (
    grade VARCHAR(100) NOT NULL,
    start_date DATE NOT NULL,
    end_date DATE NOT NULL,
+   current_education BOOLEAN DEFAULT false,
    user_id INT,
    FOREIGN KEY (user_id) REFERENCES userprofile(id) ON DELETE CASCADE
 );
@@ -39,6 +40,7 @@ CREATE TABLE user_experience (
    description VARCHAR(500) NOT NULL,
    start_date DATE NOT NULL,
    end_date DATE NOT NULL,
+   current_job BOOLEAN DEFAULT false,
    user_id INT,
    FOREIGN KEY (user_id) REFERENCES userprofile(id) ON DELETE CASCADE
 );

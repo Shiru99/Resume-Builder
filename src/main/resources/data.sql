@@ -64,6 +64,7 @@ INSERT INTO
         grade,
         start_date,
         end_date,
+        current_education,
         user_id
     )
 VALUES
@@ -74,6 +75,7 @@ VALUES
         '4.0 GPA',
         '2017-03-14',
         '2018-03-14',
+        true,
         1
     ),
     (
@@ -83,6 +85,7 @@ VALUES
         '3.9 GPA',
         '2013-03-14',
         '2017-03-14',
+        false,
         1
     ),
     (
@@ -92,6 +95,7 @@ VALUES
         '4.0 GPA',
         '2017-03-14',
         '2018-03-14',
+        true,
         2
     ),
     (
@@ -101,6 +105,7 @@ VALUES
         '3.9 GPA',
         '2013-03-14',
         '2017-03-14',
+        false,
         2
     ),
     (
@@ -110,6 +115,7 @@ VALUES
         '4.0 GPA',
         '2017-03-14',
         '2018-03-14',
+        true,
         3
     ),
     (
@@ -119,6 +125,7 @@ VALUES
         '3.9 GPA',
         '2013-03-14',
         '2017-03-14',
+        false,
         3
     )
 ;
@@ -132,6 +139,7 @@ INSERT INTO
         description,
         start_date,
         end_date,
+        current_job,
         user_id
     )
 VALUES
@@ -142,6 +150,7 @@ VALUES
         'Intrinsicly enable optimal core competencies through corporate relationships. Phosfluorescently implement worldwide vortals and client-focused imperatives. Conveniently initiate virtual paradigms and top-line convergence.',
         '2018-03-14',
         '2021-07-14',
+        true,
         1
     ),
     (
@@ -151,6 +160,7 @@ VALUES
         'Progressively reconceptualize multifunctional "outside the box" thinking through inexpensive methods of empowerment. Compellingly morph extensive niche markets with mission-critical ideas. Phosfluorescently deliver bricks-and-clicks strategic theme areas rather than scalable benefits.',
         '2014-07-14',
         '2018-03-14',
+        false,
         1
     ),
     (
@@ -160,6 +170,7 @@ VALUES
         'Intrinsicly enable optimal core competencies through corporate relationships. Phosfluorescently implement worldwide vortals and client-focused imperatives. Conveniently initiate virtual paradigms and top-line convergence.',
         '2018-03-14',
         '2021-07-14',
+        true,
         2
     ),
     (
@@ -169,6 +180,7 @@ VALUES
         'Progressively reconceptualize multifunctional "outside the box" thinking through inexpensive methods of empowerment. Compellingly morph extensive niche markets with mission-critical ideas. Phosfluorescently deliver bricks-and-clicks strategic theme areas rather than scalable benefits.',
         '2014-07-14',
         '2018-03-14',
+        false,
         2
     ),
     (
@@ -178,6 +190,7 @@ VALUES
         'Intrinsicly enable optimal core competencies through corporate relationships. Phosfluorescently implement worldwide vortals and client-focused imperatives. Conveniently initiate virtual paradigms and top-line convergence.',
         '2018-03-14',
         '2021-07-14',
+        true,
         3
     ),
     (
@@ -187,6 +200,7 @@ VALUES
         'Progressively reconceptualize multifunctional "outside the box" thinking through inexpensive methods of empowerment. Compellingly morph extensive niche markets with mission-critical ideas. Phosfluorescently deliver bricks-and-clicks strategic theme areas rather than scalable benefits.',
         '2014-07-14',
         '2018-03-14',
+        false,
         3
     )
 ;

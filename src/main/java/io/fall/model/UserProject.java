@@ -1,6 +1,7 @@
 package io.fall.model;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "UserEducation")
+@Table(name = "UserProject")
 public class UserProject {
 
     @Id
@@ -66,12 +67,20 @@ public class UserProject {
         return startDate;
     }
 
+    public String formattedStartDate(){
+        return startDate.format(DateTimeFormatter.ofPattern("MMM yyyy"));
+    }
+
     public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
     public LocalDate getEndDate() {
         return endDate;
+    }
+
+    public String formattedEndDate(){
+        return endDate.format(DateTimeFormatter.ofPattern("MMM yyyy"));
     }
 
     public void setEndDate(LocalDate endDate) {

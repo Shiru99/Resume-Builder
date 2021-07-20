@@ -1,6 +1,7 @@
 package io.fall.model;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,6 +22,7 @@ public class UserEducation {
     private String grade;
     private LocalDate startDate;
     private LocalDate endDate;
+    private boolean currentEducation;
 
     @ManyToOne 
     @JoinColumn(name = "userId")   // Foreign key reference
@@ -36,6 +38,14 @@ public class UserEducation {
         this.grade = grade;
         this.startDate = startDate;
         this.endDate = endDate;
+    }
+
+    public boolean isCurrentEducation() {
+        return currentEducation;
+    }
+
+    public void setCurrentEducation(boolean currentEducation) {
+        this.currentEducation = currentEducation;
     }
 
     public String getCollege() {
@@ -66,6 +76,10 @@ public class UserEducation {
         return startDate;
     }
 
+    public String formattedStartDate(){
+        return startDate.format(DateTimeFormatter.ofPattern("MMM yyyy"));
+    }
+
     public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
@@ -76,6 +90,10 @@ public class UserEducation {
 
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
+    }
+
+    public String formattedEndDate(){
+        return endDate.format(DateTimeFormatter.ofPattern("MMM yyyy"));
     }
 
     public UserProfile getUserProfile() {
