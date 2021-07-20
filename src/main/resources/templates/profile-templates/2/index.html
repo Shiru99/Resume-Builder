@@ -1,6 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html"/>
@@ -20,7 +20,7 @@
 
         <div id="contact-info" class="vcard">
 
-            <h1 class="fn">Jenny Doe</h1>
+            <h1 class="fn" th:text="${userProfile.getUserName()}">Doe Family Member</h1>
 
             <p>
                 Cell: <span class="tel">555-666-7777</span><br />
@@ -29,11 +29,7 @@
         </div>
 
         <div id="objective">
-            <p>
-                I am an outgoing and energetic (ask anybody) young professional, seeking a
-                career that fits my professional skills, personality, and murderous tendencies.
-                My squid-like head is a masterful problem solver and inspires fear in who gaze upon it.
-                I can bring world domination to your organization.
+            <p th:text="${userProfile.getSummary()}">[Default Summary] I am an outgoing and energetic (ask anybody) young professional, seeking a career that fits my professional skills, personality, and murderous tendencies. My squid-like head is a masterful problem solver and inspires fear in who gaze upon it. I can bring world domination to your organization.
             </p>
         </div>
 

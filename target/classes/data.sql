@@ -6,8 +6,8 @@ INSERT INTO users (id,username,password,active,roles)
 
     INSERT INTO userprofile (id,theme,username,summary) 
         VALUES  
-            (1, 1 , 'John Doe', 'Dynamic and creative software developer with over 5 years of experience in producing robust code for high-volume companies. Eager to support the dev team at CDE Inc. with top-notch coding skills. In previous roles, doubled code-efficiency of ABC Inc., and increased customer retention by 30% among others.'),
+            (1, 1 , 'John Doe', 'I am an outgoing and energetic (ask anybody) young professional, seeking a career that fits my professional skills, personality, and murderous tendencies. My squid-like head is a masterful problem solver and inspires fear in who gaze upon it. I can bring world domination to your organization.'),
 
-            (2, 2 , 'Jenny Doe', 'Dynamic and creative software developer with over 5 years of experience in producing robust code for high-volume companies. Eager to support the dev team at CDE Inc. with top-notch coding skills. In previous roles, doubled code-efficiency of ABC Inc., and increased customer retention by 30% among others.'),
+            (2, 2 , 'Jenny Doe', 'I am an outgoing and energetic (ask anybody) young professional, seeking a career that fits my professional skills, personality, and murderous tendencies. My squid-like head is a masterful problem solver and inspires fear in who gaze upon it. I can bring world domination to your organization.'),
             
-            (3, 3 , 'James Doe', 'Likable and dedicated IT consultant with over 5 years of experience in a fast-paced fin-tech company. Eager to offer superb analytical and computer skills to help ABC Inc grow its client base. In previous roles recognized for top company-wide quality satisfaction rating (over 99%). Also, reduced client wait time by 20% and boosted client satisfaction ratings by more than 40% in a single quarter. ');
+            (3, 3 , 'James Doe', 'Progressively evolve cross-platform ideas before impactful infomediaries. Energistically visualize tactical initiatives before cross-media catalysts for change.');

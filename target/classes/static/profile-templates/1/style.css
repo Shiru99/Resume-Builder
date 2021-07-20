@@ -101,6 +101,10 @@ body {
   clear: both;
 }
 
+.bottom {
+  border-bottom: 2px solid #cf8a05;
+}
+
 p {
   font-size: 1em;
   line-height: 1.4em;

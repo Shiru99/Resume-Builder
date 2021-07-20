@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="https://www.thymeleaf.org">
 
 <head>
 	<title>Template 1</title>
@@ -20,15 +20,15 @@
 			</div>
 
 			<div id="name">
-				<h1 class="quickFade delayTwo">John Doe</h1>
-				<h2 class="quickFade delayThree">Job Title</h2>
+				<h1 class="quickFade delayTwo" th:text="${userProfile.getUserName()}">[User Name]</h1>
+				<h2 class="quickFade delayThree">[Job Title]</h2>
 			</div>
 
 			<div id="contactDetails" class="quickFade delayFour">
 				<ul>
-					<li>e: <a href="mailto:john.doe@gmail.com" target="_blank">john.doe@gmail.com</a></li>
-					<li>w: <a href="http://www.john-doe.com">www.john-doe.com</a></li>
-					<li>m: 01234567890</li>
+					<li><b>Email</b>: <a href="mailto:john.doe@gmail.com" target="_blank">[john.doe@gmail.com]</a></li>
+					<li><b>Phone No</b>: [01234567890]</li>
+					<li><b>Website: </b><a href="http://www.john-doe.com">[www.johndoe.com]</a></li>
 				</ul>
 			</div>
 			<div class="clear"></div>
@@ -42,11 +42,7 @@
 					</div>
 
 					<div class="sectionContent">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dolor metus, interdum at
-							scelerisque in, porta at lacus. Maecenas dapibus luctus cursus. Lorem ipsum dolor sit amet,
-							consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non
-							consequat enim. Vestibulum bibendum mattis dignissim. Proin id sapien quis libero interdum
-							porttitor.</p>
+						<p th:text="${userProfile.getSummary()}">[Default Summary] I am an outgoing and energetic (ask anybody) young professional, seeking a career that fits my professional skills, personality, and murderous tendencies. My squid-like head is a masterful problem solver and inspires fear in who gaze upon it. I can bring world domination to your organization.</p>
 					</div>
 				</article>
 				<div class="clear"></div>
@@ -60,27 +56,28 @@
 
 				<div class="sectionContent">
 					<article>
-						<h2>Job Title at Company</h2>
+						<h2>Senior Interface Designer at Facebook</h2>
 						<p class="subDetails">April 2011 - Present</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus
-							hendrerit. Curabitur non consequat enim. Vestibulum bibendum mattis dignissim. Proin id
-							sapien quis libero interdum porttitor.</p>
+						<p>Intrinsicly enable optimal core competencies through corporate relationships.
+							Phosfluorescently implement worldwide vortals and client-focused imperatives. Conveniently
+							initiate virtual paradigms and top-line convergence.</p>
 					</article>
 
 					<article>
-						<h2>Job Title at Company</h2>
-						<p class="subDetails">Janruary 2007 - March 2011</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus
-							hendrerit. Curabitur non consequat enim. Vestibulum bibendum mattis dignissim. Proin id
-							sapien quis libero interdum porttitor.</p>
+						<h2>Senior Interface Designer at Apple Inc.</h2>
+						<p class="subDetails">Janruary 2007 - March 20011</p>
+						<p>Progressively reconceptualize multifunctional "outside the box" thinking through inexpensive
+							methods of empowerment. Compellingly morph extensive niche markets with mission-critical
+							ideas. Phosfluorescently deliver bricks-and-clicks strategic theme areas rather than
+							scalable benefits.</p>
 					</article>
 
 					<article>
-						<h2>Job Title at Company</h2>
-						<p class="subDetails">October 2004 - December 2006</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus
-							hendrerit. Curabitur non consequat enim. Vestibulum bibendum mattis dignissim. Proin id
-							sapien quis libero interdum porttitor.</p>
+						<h2>Principal and Creative Lead at Microsoft</h2>
+						<p class="subDetails">October 2004 - December 2007</p>
+						<p>Intrinsicly transform flexible manufactured products without excellent intellectual capital.
+							Energistically evisculate orthogonal architectures through covalent action items.
+							Assertively incentivize sticky platforms without synergistic materials.</p>
 					</article>
 				</div>
 				<div class="clear"></div>
@@ -115,23 +112,20 @@
 
 				<div class="sectionContent">
 					<article>
-						<h2>College/University</h2>
-						<p class="subDetails">Qualification</p>
+						<h2>Indiana University - Bloomington, Indiana</h2>
+						<p class="subDetails">Dual Major, Economics and English — 4.0 GPA</p>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus
 							hendrerit. Curabitur non consequat enim.</p>
 					</article>
-
-					<article>
-						<h2>College/University</h2>
-						<p class="subDetails">Qualification</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus
-							hendrerit. Curabitur non consequat enim.</p>
-					</article>
+					
 				</div>
+
 				<div class="clear"></div>
 			</section>
-
 		</div>
+		<br>
+		<div class="bottom"></div>
+		<br>
 	</div>
 </body>
 

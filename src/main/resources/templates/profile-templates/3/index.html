@@ -1,5 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org">
 
 <head>
 	<title>Template 3</title>
@@ -17,14 +18,13 @@
 
 	<div id="doc2" class="yui-t7">
 		<div id="inner">
-
 			<div id="hd">
 				<div class="yui-gc">
 					<div id="one">
 						<img src="../profile-templates/profile-pic.png" alt="profile pic" />
 					</div>
 					<div id="two" class="yui-u first">
-						<h1>James Doe</h1>
+						<h1 th:text="${userProfile.getUserName()}">[User Name]</h1>
 						<h2>Web Designer, Director</h2>
 					</div>
 					<div id="three" class="yui-u">
@@ -34,7 +34,6 @@
 							<h3>(313) - 867-5309</h3>
 						</div>
 					</div>
-					
 				</div>
 			</div>
 
@@ -46,10 +45,7 @@
 								<h2>Profile</h2>
 							</div>
 							<div class="yui-u">
-								<p class="enlarge">
-									Progressively evolve cross-platform ideas before impactful infomediaries.
-									Energistically visualize tactical initiatives before cross-media catalysts for
-									change.
+								<p class="enlarge"  th:text="${userProfile.getSummary()}">[Default Summary]  Progressively evolve cross-platform ideas before impactful infomediaries. Energistically visualize tactical initiatives before cross-media catalysts for change.
 								</p>
 							</div>
 						</div>
@@ -60,8 +56,7 @@
 							<div class="yui-u">
 								<div class="talent">
 									<h2>Web Design</h2>
-									<p>Assertively exploit wireless initiatives rather than synergistic core
-										competencies. </p>
+									<p>Assertively exploit wireless initiatives rather than synergistic core competencies. </p>
 								</div>
 								<div class="talent">
 									<h2>Interface Design</h2>
@@ -70,8 +65,7 @@
 								</div>
 								<div class="talent">
 									<h2>Project Direction</h2>
-									<p>Proven ability to lead and manage a wide variety of design and development
-										projects in team and independent situations.</p>
+									<p>Proven ability to lead and manage a wide variety of design and development projects in team and independent situations.</p>
 								</div>
 							</div>
 						</div>
