@@ -1,102 +1,122 @@
 <!DOCTYPE html>
-
 <html xmlns:th="https://www.thymeleaf.org">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html"/>
-    <meta name="viewport" content="width=device-width" />
-	<meta name="description" content="Resume Template 1" />
-	<meta charset="UTF-8">
-
     <title>Template 2</title>
-    <link type="text/css" rel="stylesheet" href="../profile-templates/2/style.css">
+
+    <meta http-equiv="Content-Type" content="text/html" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Resume Template 2" />
+    <meta charset="UTF-8" />
+
+    <link type="text/css" rel="stylesheet" href="../profile-templates/2/style.css" />
 </head>
 
 <body>
-
     <div id="page-wrap">
-
+        <!-- TODO : profile-pic -->
         <img src="../profile-templates/profile-pic.png" alt="profile pic" id="pic" />
 
         <div id="contact-info" class="vcard">
-				
-            <h1 class="fn" th:text="${userProfile.getFirstName()}+' '+${userProfile.getLastName()}">[First Name + Last Name]</h1>
+            <h1 class="fn" th:text="${userProfile.getFirstName()}+' '+${userProfile.getLastName()}">
+                [First Name + Last Name]
+            </h1>
 
             <h2 th:text="${userProfile.getJobTitle()}">[Job Title]</h2>
             <p>
                 <!-- TODO : href="mailto:${}" -->
-                Cell: <a class="email" th:text="${userProfile.getPhoneNum()}">[Phone Number]</a><br>
-                Email: <a class="email" th:text="${userProfile.getEmail()}" href="#">[email]</a><br>
+                Cell: <a class="email" th:text="${userProfile.getPhoneNum()}">[Phone Number]</a><br />
+                Email: <a class="email" th:text="${userProfile.getEmail()}" href="#">[email]</a><br />
                 Website: <a class="email" th:text="${userProfile.getWebsite()}" href="#">[Website]</a>
             </p>
         </div>
 
         <div id="objective">
-            <p th:text="${userProfile.getSummary()}">[Default Summary] I am an outgoing and energetic (ask anybody) young professional, seeking a career that fits my professional skills, personality, and murderous tendencies. My squid-like head is a masterful problem solver and inspires fear in who gaze upon it. I can bring world domination to your organization.
+            <p th:text="${userProfile.getSummary()}">
+                [Default Summary] I am an outgoing and energetic (ask anybody) young professional, seeking a career that
+                fits my professional skills, personality, and murderous tendencies. My squid-like head is a masterful
+                problem solver and inspires fear in who gaze upon it. I can bring world domination to your organization.
             </p>
         </div>
 
+
+
+
+
         <div class="clear"></div>
 
-        <dl>
-            <dd class="clear"></dd>
 
-            <dt>Education</dt>
-            <dd>
-                <h2>Withering Madness University - Planet Vhoorl</h2>
-                <p><strong>Major:</strong> Public Relations<br />
-                    <strong>Minor:</strong> Scale Tending
-                </p>
+        <dl>
+            <br>
+            <dt>Experience</dt>
+            <dd th:each="experience : ${userProfile.getUserExperiences()}">
+
+                <h2 th:text="${experience.getPosition()}">[Position]</h2>
+                <h2>
+                    <span
+                        th:text="${experience.getCompany()} +',  '+ ${experience.formattedStartDate()}+' - '+ (${experience.isCurrentJob()}? 'Present' : ${experience.formattedEndDate()})">
+                        [company, Start Date - End Date]
+                    </span>
+                </h2>
+                <ul>
+                    <li th:text="${experience.getDescription()}"> [Work Description] Inspired and won highest peasant
+                        death competition among servants, Helped coordinate managers to grow cult following, Provided
+                        untimely deaths to all who opposed</li>
+                </ul>
             </dd>
 
             <dd class="clear"></dd>
+            <dt>Education</dt>
+            <dd th:each="education : ${userProfile.getUserEducations()}">
+                <h2 th:text="${education.getCollege()}">[college]</h2>
+                <span th:text="${education.getDegree()} + ' - '+ ${education.getGrade()}">[Degree - Grades]</span>
+                <h2>
+                    <span
+                        th:text="${education.formattedStartDate()}+' - '+ (${education.isCurrentEducation()}? 'Present' : ${education.formattedEndDate()})">
+                        [Start Date - End Date]
+                    </span>
+                </h2>
+                <br>
+            </dd>
 
+
+            <dd class="clear"></dd>
+            <dt>Projects</dt>
+            <dd th:each="project: ${userProfile.getUserProjects()}">
+                <h2 th:text="${project.getProjectName()}">[Project Name]</h2>
+                <span th:text="${project.getTools()}">[Tools used]</span>
+                <h2>
+                    <span
+                        th:text="${project.formattedStartDate()}+' - '+ ${project.formattedEndDate()}">
+                        [Start Date - End Date]
+                    </span>
+                </h2>
+                <ul>
+                    <li th:text="${project.getDescription()}">[Project Description] Inspired and won highest peasant
+                        death competition among servants, Helped coordinate managers to grow cult following, Provided
+                        untimely deaths to all who opposed</li>
+                </ul>
+            </dd>
+
+            <dd class="clear"></dd>
             <dt>Skills</dt>
             <dd>
                 <h2>Office skills</h2>
-                <p>Office and records management, database administration, event organization, customer support, travel
-                    coordination</p>
-
+                <p> Office and records management, database administration, event organization, customer support, travel coordination</p>
                 <h2>Computer skills</h2>
-                <p>Microsoft productivity software (Word, Excel, etc), Adobe Creative Suite, Windows</p>
+                <p> Microsoft productivity software (Word, Excel, etc), Adobe Creative Suite, Windows </p>
             </dd>
+            
 
-            <dd class="clear"></dd>
+           
+            
+            
+            <br>
 
-            <dt>Experience</dt>
-            <dd>
-                <h2>Doomsday Cult <span>Leader/Overlord - Baton Rogue, LA - 1926-2010</span></h2>
-                <ul>
-                    <li>Inspired and won highest peasant death competition among servants</li>
-                    <li>Helped coordinate managers to grow cult following</li>
-                    <li>Provided untimely deaths to all who opposed</li>
-                </ul>
-
-                <h2>The Watering Hole <span>Bartender/Server - Milwaukee, WI - 2009</span></h2>
-                <ul>
-                    <li>Worked on grass-roots promotional campaigns</li>
-                    <li>Reduced theft and property damage percentages</li>
-                    <li>Janitorial work, Laundry</li>
-                </ul>
-            </dd>
-
-            <dd class="clear"></dd>
-
-            <dt>Hobbies</dt>
-            <dd>World Domination, Deep Sea Diving, Murder Most Foul</dd>
-
-            <dd class="clear"></dd>
-
-            <dt>References</dt>
-            <dd>Available on request</dd>
-
-            <dd class="clear"></dd>
         </dl>
 
         <div class="clear"></div>
-
     </div>
-
 </body>
 
 </html>

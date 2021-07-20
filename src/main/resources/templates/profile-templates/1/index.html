@@ -82,8 +82,7 @@
 						<p class="subDetails">
 							<span th:text="${experience.formattedStartDate()}">[Start Date]</span>
 							-
-							<span
-								th:text="${experience.isCurrentJob()}? 'Present' : ${experience.formattedEndDate()}">[End
+							<span th:text="${experience.isCurrentJob()}? 'Present' : ${experience.formattedEndDate()}">[End
 								Date]</span>
 						</p>
 
@@ -162,7 +161,7 @@
 							[Tools used]
 						</p>
 
-						<p th:text="${project.getDescription()}">[Description]</p>
+						<p th:text="${project.getDescription()}">[Project Description]</p>
 					</article>
 				</div>
 

@@ -157,8 +157,7 @@ a#pdf:hover {
 
 .job {
   position: relative;
-  margin-bottom: 1em;
-  padding-bottom: 1em;
+  padding-bottom: 0.5em;
   border-bottom: 1px solid #ccc;
 }
 .job h4 {
@@ -201,7 +200,7 @@ a#pdf:hover {
 }
 
 .yui-u {
-  width: 40%;
+  width: 60%;
   padding: 0%;
   margin: 0%;
 }

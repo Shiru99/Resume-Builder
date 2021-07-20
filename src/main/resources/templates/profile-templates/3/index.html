@@ -18,13 +18,15 @@
 
 	<div id="doc2" class="yui-t7">
 		<div id="inner">
+
 			<div id="hd">
 				<div class="yui-gc">
 					<div id="one">
 						<img src="../profile-templates/profile-pic.png" alt="profile pic" />
 					</div>
 					<div id="two" class="yui-u first">
-						<h1 th:text="${userProfile.getFirstName()}+' '+${userProfile.getLastName()}">[First Name + Last Name]</h1>
+						<h1 th:text="${userProfile.getFirstName()}+' '+${userProfile.getLastName()}">[First Name + Last
+							Name]</h1>
 						<h2 th:text="${userProfile.getJobTitle()}">[Job Title]</h2>
 					</div>
 
@@ -48,33 +50,42 @@
 								<h2>Profile</h2>
 							</div>
 							<div class="yui-u">
-								<p class="enlarge"  th:text="${userProfile.getSummary()}">[Default Summary]  Progressively evolve cross-platform ideas before impactful infomediaries. Energistically visualize tactical initiatives before cross-media catalysts for change.
+								<p class="enlarge" th:text="${userProfile.getSummary()}">[Default Summary] Progressively
+									evolve cross-platform ideas before impactful infomediaries. Energistically visualize
+									tactical initiatives before cross-media catalysts for change.
 								</p>
 							</div>
 						</div>
+
 						<div class="yui-gf">
 							<div class="yui-u first">
-								<h2>Skills</h2>
+								<h2>Experience</h2>
 							</div>
-							<div class="yui-u">
-								<div class="talent">
-									<h2>Web Design</h2>
-									<p>Assertively exploit wireless initiatives rather than synergistic core competencies. </p>
-								</div>
-								<div class="talent">
-									<h2>Interface Design</h2>
-									<p>Credibly streamline mission-critical value with multifunctional functionalities.
-									</p>
-								</div>
-								<div class="talent">
-									<h2>Project Direction</h2>
-									<p>Proven ability to lead and manage a wide variety of design and development projects in team and independent situations.</p>
+							<div class="yui-u" th:each="experience : ${userProfile.getUserExperiences()}">
+								<div class="job last">
+									<h2 th:text="${experience.getCompany()}">[company]</h2>
+									<h3 th:text="${experience.getPosition()}">[Position]</h3>
+									<h4>
+										<span th:text="${experience.formattedStartDate()}">[Start Date]</span>
+										-
+										<span
+											th:text="${experience.isCurrentJob()}? 'Present' : ${experience.formattedEndDate()}">[End
+											Date]
+										</span>
+									</h4>
+									<p th:text="${experience.getDescription()}">
+										[Work Description] Intrinsicly enable optimal core competencies through
+										corporate relationships.Phosfluorescently implement worldwide vortals and
+										client-focused imperatives.
+										Conveniently initiate virtual paradigms and top-line convergence. </p>
 								</div>
 							</div>
 						</div>
+						
+
 						<div class="yui-gf">
 							<div class="yui-u first">
-								<h2>Technical</h2>
+								<h2>Technical Skills</h2>
 							</div>
 							<div class="yui-u">
 								<ul class="talent">
@@ -94,54 +105,85 @@
 								</ul>
 							</div>
 						</div>
+
 						<div class="yui-gf">
 							<div class="yui-u first">
-								<h2>Experience</h2>
+								<h2>Projects</h2>
 							</div>
-							<div class="yui-u">
-								<div class="job">
-									<h2>Facebook</h2>
-									<h3>Senior Interface Designer</h3>
-									<h4>2005-2007</h4>
-									<p>Intrinsicly enable optimal core competencies through corporate relationships. Phosfluorescently implement worldwide vortals and client-focused imperatives. Conveniently initiate virtual paradigms and top-line convergence. </p>
-								</div>
-								<div class="job">
-									<h2>Apple Inc.</h2>
-									<h3>Senior Interface Designer</h3>
-									<h4>2005-2007</h4>
-									<p>Progressively reconceptualize multifunctional "outside the box" thinking through inexpensive methods of empowerment. Compellingly morph extensive niche markets with mission-critical ideas. Phosfluorescently deliver bricks-and-clicks strategic theme areas rather than scalable benefits. </p>
-								</div>
-								<div class="job">
-									<h2>Microsoft</h2>
-									<h3>Principal and Creative Lead</h3>
-									<h4>2004-2005</h4>
-									<p>Intrinsicly transform flexible manufactured products without excellent intellectual capital. Energistically evisculate orthogonal architectures through covalent action items. Assertively incentivize sticky platforms without synergistic materials. </p>
-								</div>
+							<div class="yui-u" th:each="project: ${userProfile.getUserProjects()}">
 								<div class="job last">
-									<h2>International Business Machines (IBM)</h2>
-									<h3>Lead Web Designer</h3>
-									<h4>2001-2004</h4>
-									<p>Globally re-engineer cross-media schemas through viral methods of empowerment. Proactively grow long-term high-impact human capital and highly efficient innovation. Intrinsically iterate excellent e-tailers with timely e-markets.</p>
+									<h2 th:text="${project.getProjectName()}">[Project Name]</h2>
+									<h3 th:text="${project.getTools()}">
+										[Tools used]</h3>
+									<h4>
+										<span th:text="${project.formattedStartDate()}">[Start Date]</span>
+										-
+										<span th:text="${project.formattedEndDate()}">[End Date]</span>
+									</h4>
+									<p th:text="${project.getDescription()}">[Project Description] Intrinsicly enable
+										optimal core competencies through corporate relationships.Phosfluorescently implement worldwide vortals and client-focused imperatives. Conveniently initiate virtual paradigms and top-line convergence. </p>
 								</div>
-
 							</div>
 						</div>
+
 						<div class="yui-gf last">
 							<div class="yui-u first">
 								<h2>Education</h2>
 							</div>
-							<div class="yui-u">
-								<h2>Indiana University - Bloomington, Indiana</h2>
-								<h3>Dual Major, Economics and English &mdash; <strong>4.0 GPA</strong> </h3>
+							<div class="yui-u" th:each="education : ${userProfile.getUserEducations()}">
+								<h2 th:text="${education.getCollege()}">[college]</h2>
+
+								<div class="job last">
+									<h3>
+										<span th:text="${education.getDegree()}">[Degree]</span>
+										-
+										<span th:text="${education.getGrade()}">[Grades]</span>
+									</h3>
+									<h4 class="subDetails">
+										<span th:text="${education.formattedStartDate()}">[Start Date]</span>
+										-
+										<span
+											th:text="${education.isCurrentEducation()}? 'Present' : ${education.formattedEndDate()}">
+											[End Date] </span>
+									</h4>
+								</div>
+								<br>
 							</div>
 						</div>
+
+						<!-- <div class="yui-gf last">
+							<div class="yui-u first">
+								<h2>Skills</h2>
+							</div>
+							<div class="yui-u">
+								<div class="talent">
+									<h2>Web Design</h2>
+									<p>Assertively exploit wireless initiatives rather than synergistic core
+										competencies. </p>
+								</div>
+								<div class="talent">
+									<h2>Interface Design</h2>
+									<p>Credibly streamline mission-critical value with multifunctional functionalities.
+									</p>
+								</div>
+								<div class="talent">
+									<h2>Project Direction</h2>
+									<p>Proven ability to lead and manage a wide variety of design and development
+										projects in team and independent situations.</p>
+								</div>
+							</div>
+						</div> -->
+
 					</div>
 				</div>
 			</div>
 			<div id="ft">
-				<p><span th:text="${userProfile.getFirstName()}+' '+${userProfile.getLastName()}">[First Name + Last Name]</span> &mdash; <a th:text="${userProfile.getEmail()}">[email]</a> &mdash; <span th:text="${userProfile.getPhoneNum()}">[Phone Number]</span></p>
+				<p><span th:text="${userProfile.getFirstName()}+' '+${userProfile.getLastName()}">[First Name + Last
+						Name]</span> &mdash; <a th:text="${userProfile.getEmail()}">[email]</a> &mdash; <span
+						th:text="${userProfile.getPhoneNum()}">[Phone Number]</span></p>
 			</div>
 		</div>
 	</div>
 </body>
+
 </html>
