@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS users, userprofile, user_experience, user_education, user_project;
+DROP TABLE IF EXISTS users, userprofile, user_experience, user_education, user_project, user_skills,skill;
 
 CREATE TABLE users (
    id   INT     PRIMARY KEY     NOT NULL,
@@ -18,7 +18,8 @@ CREATE TABLE userprofile (
    email VARCHAR(50)  NOT NULL,
    website VARCHAR(50),
    phone_num VARCHAR(50)  NOT NULL,
-   summary VARCHAR(500)
+   summary VARCHAR(500),
+   profile_pic VARCHAR(200)
 );
 
 CREATE TABLE user_education (
@@ -54,4 +55,16 @@ CREATE TABLE user_project (
    end_date DATE NOT NULL,
    user_id INT,
    FOREIGN KEY (user_id) REFERENCES userprofile(id) ON DELETE CASCADE
+);
+
+CREATE TABLE skill(
+   id INT     PRIMARY KEY     NOT NULL,  
+   skill_name VARCHAR(50)
+);
+
+CREATE TABLE user_skills(
+   user_id INT  NOT NULL,  
+   skill_id INT  NOT NULL, 
+   FOREIGN KEY (user_id) REFERENCES userprofile(id) ON DELETE CASCADE,
+   FOREIGN KEY (skill_id) REFERENCES skill(id) ON DELETE CASCADE
 );

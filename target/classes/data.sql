@@ -16,7 +16,8 @@ INSERT INTO
         email,
         website,
         phone_num,
-        summary
+        summary,
+        profile_pic
     )
 VALUES
     (
@@ -29,7 +30,8 @@ VALUES
         'john.doe@gmail.com',
         'www.johndoe.com',
         '1234567890',
-        'I am an outgoing and energetic (ask anybody) young professional, seeking a career that fits my professional skills, personality, and murderous tendencies. My squid-like head is a masterful problem solver and inspires fear in who gaze upon it. I can bring world domination to your organization.'
+        'I am an outgoing and energetic (ask anybody) young professional, seeking a career that fits my professional skills, personality, and murderous tendencies. My squid-like head is a masterful problem solver and inspires fear in who gaze upon it. I can bring world domination to your organization.',
+        'https://st2.depositphotos.com/1009634/7235/v/600/depositphotos_72350117-stock-illustration-no-user-profile-picture-hand.jpg'
     ),
     (
         2,
@@ -41,7 +43,8 @@ VALUES
         'jenny.doe@gmail.com',
         'www.jennydoe.com',
         '1234567890',
-        'I am an outgoing and energetic (ask anybody) young professional, seeking a career that fits my professional skills, personality, and murderous tendencies. My squid-like head is a masterful problem solver and inspires fear in who gaze upon it. I can bring world domination to your organization.'
+        'I am an outgoing and energetic (ask anybody) young professional, seeking a career that fits my professional skills, personality, and murderous tendencies. My squid-like head is a masterful problem solver and inspires fear in who gaze upon it. I can bring world domination to your organization.',
+        'https://st2.depositphotos.com/1009634/7235/v/600/depositphotos_72350117-stock-illustration-no-user-profile-picture-hand.jpg'
     ),
     (
         3,
@@ -53,7 +56,8 @@ VALUES
         'james.doe@gmail.com',
         'www.jamesdoe.com',
         '1234567890',
-        'Progressively evolve cross-platform ideas before impactful infomediaries. Energistically visualize tactical initiatives before cross-media catalysts for change.'
+        'Progressively evolve cross-platform ideas before impactful infomediaries. Energistically visualize tactical initiatives before cross-media catalysts for change.',
+        ''
     );
 
 INSERT INTO
@@ -127,9 +131,7 @@ VALUES
         '2017-03-14',
         false,
         3
-    )
-;
-
+    );
 
 INSERT INTO
     user_experience (
@@ -202,9 +204,7 @@ VALUES
         '2018-03-14',
         false,
         3
-    )
-;
-
+    );
 
 INSERT INTO
     user_project (
@@ -270,5 +270,50 @@ VALUES
         '2018-03-14',
         '2018-05-14',
         3
-    )
+    );
+
+INSERT INTO
+    skill (id, skill_name)
+VALUES
+    (1, 'HTML'),
+    (2, 'CSS'),
+    (3, 'Javascript'),
+    (4, 'Jquery'),
+    (5, 'PHP'),
+    (6, 'CVS / Subversion'),
+    (7, 'OS X'),
+    (8, 'Windows XP/Vista'),
+    (9, 'Linux')
+;
+
+INSERT INTO
+    user_skills (user_id, skill_id)
+VALUES
+    (1,1),
+    (1,2),
+    (1,3),
+    (1,4),
+    (1,5),
+    (1,6),
+    -- (1,7),
+    (1,8),
+    (1,9),
+    (2,1),
+    (2,2),
+    (2,3),
+    (2,4),
+    (2,5),
+    -- (2,6),
+    (2,7),
+    (2,8),
+    (2,9),
+    (3,1),
+    (3,2),
+    -- (3,3),
+    (3,4),
+    (3,5),
+    (3,6),
+    (3,7),
+    (3,8),
+    (3,9)
 ;
