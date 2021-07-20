@@ -1,8 +1,13 @@
 package io.fall.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,7 +26,42 @@ public class UserProfile {
     private String phoneNum;
     private String summary;
 
-    UserProfile(){}
+    @OneToMany(
+        mappedBy = "userProfile",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
+    )
+    private List<UserEducation> userEducations = new ArrayList<>();
+
+    @OneToMany(
+        mappedBy = "userProfile",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
+    )
+    private List<UserExperience> userExperiences = new ArrayList<>();
+
+    @OneToMany(
+        mappedBy = "userProfile",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
+    )
+    private List<UserProject> userProjects = new ArrayList<>();
+
+    public UserProfile(){
+
+    }
+
+    public UserProfile(int theme, String userName, String firstName, String lastName, String jobTitle, String email, String website, String phoneNum, String summary) {
+        this.theme = theme;
+        this.userName = userName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.jobTitle = jobTitle;
+        this.email = email;
+        this.website = website;
+        this.phoneNum = phoneNum;
+        this.summary = summary;
+    }
 
     public int getTheme() {
         return theme;
@@ -29,30 +69,6 @@ public class UserProfile {
 
     public void setTheme(int theme) {
         this.theme = theme;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getWebsite() {
-        return website;
-    }
-
-    public void setWebsite(String website) {
-        this.website = website;
-    }
-
-    public String getJobTitle() {
-        return jobTitle;
-    }
-
-    public void setJobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
     }
 
     public String getUserName() {
@@ -79,12 +95,28 @@ public class UserProfile {
         this.lastName = lastName;
     }
 
+    public String getJobTitle() {
+        return jobTitle;
+    }
+
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
+    }
+
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
     }
 
     public String getPhoneNum() {
@@ -101,5 +133,41 @@ public class UserProfile {
 
     public void setSummary(String summary) {
         this.summary = summary;
+    }
+
+    public List<UserEducation> getUserEducations() {
+        return userEducations;
+    }
+
+    public void setUserEducations(List<UserEducation> userEducations) {
+        this.userEducations = userEducations;
+    }
+
+    public void addUserEducations(UserEducation userEducation) {
+        this.userEducations.add(userEducation);
+    }
+
+    public List<UserExperience> getUserExperiences() {
+        return userExperiences;
+    }
+
+    public void setUserExperiences(List<UserExperience> userExperiences) {
+        this.userExperiences = userExperiences;
+    }
+
+    public void addUserExperiences(UserExperience userExperience) {
+        this.userExperiences.add(userExperience);
+    }
+
+    public List<UserProject> getUserProjects() {
+        return userProjects;
+    }
+
+    public void setUserProjects(List<UserProject> userProjects) {
+        this.userProjects = userProjects;
+    }
+
+    public void addUserProject(UserProject userProject) {
+        this.userProjects.add(userProject);
     }
 }
