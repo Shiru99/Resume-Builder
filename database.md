@@ -55,6 +55,11 @@ resumebuilder=> INSERT INTO users (id,username,password,active,roles)
 resumebuilder=> \dt;
 ```
 
+***Table Description***
+```
+\d tableName;
+```
+
 ***Table-entries***
 ```
 resumebuilder=> select * from users;
