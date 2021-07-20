@@ -24,14 +24,17 @@
 						<img src="../profile-templates/profile-pic.png" alt="profile pic" />
 					</div>
 					<div id="two" class="yui-u first">
-						<h1 th:text="${userProfile.getUserName()}">[User Name]</h1>
-						<h2>Web Designer, Director</h2>
+						<h1 th:text="${userProfile.getFirstName()}+' '+${userProfile.getLastName()}">[First Name + Last Name]</h1>
+						<h2 th:text="${userProfile.getJobTitle()}">[Job Title]</h2>
 					</div>
+
 					<div id="three" class="yui-u">
 						<div class="contact-info">
-							<h3><a id="pdf" href="#">Download PDF</a></h3>
-							<h3><a href="mailto:name@yourdomain.com">name@yourdomain.com</a></h3>
-							<h3>(313) - 867-5309</h3>
+							<!-- TODO : href="mailto:${}" -->
+							<h3 th:text="${userProfile.getPhoneNum()}">[Phone Number]</h3>
+							<h3><a th:text="${userProfile.getEmail()}" href="#">[email]</a></h3>
+							<h3><a th:text="${userProfile.getWebsite()}" href="#">[Website]</a></h3>
+							<!-- <h3><a id="pdf" >Download PDF</a></h3> -->
 						</div>
 					</div>
 				</div>
@@ -100,35 +103,25 @@
 									<h2>Facebook</h2>
 									<h3>Senior Interface Designer</h3>
 									<h4>2005-2007</h4>
-									<p>Intrinsicly enable optimal core competencies through corporate relationships.
-										Phosfluorescently implement worldwide vortals and client-focused imperatives.
-										Conveniently initiate virtual paradigms and top-line convergence. </p>
+									<p>Intrinsicly enable optimal core competencies through corporate relationships. Phosfluorescently implement worldwide vortals and client-focused imperatives. Conveniently initiate virtual paradigms and top-line convergence. </p>
 								</div>
 								<div class="job">
 									<h2>Apple Inc.</h2>
 									<h3>Senior Interface Designer</h3>
 									<h4>2005-2007</h4>
-									<p>Progressively reconceptualize multifunctional "outside the box" thinking through
-										inexpensive methods of empowerment. Compellingly morph extensive niche markets
-										with mission-critical ideas. Phosfluorescently deliver bricks-and-clicks
-										strategic theme areas rather than scalable benefits. </p>
+									<p>Progressively reconceptualize multifunctional "outside the box" thinking through inexpensive methods of empowerment. Compellingly morph extensive niche markets with mission-critical ideas. Phosfluorescently deliver bricks-and-clicks strategic theme areas rather than scalable benefits. </p>
 								</div>
 								<div class="job">
 									<h2>Microsoft</h2>
 									<h3>Principal and Creative Lead</h3>
 									<h4>2004-2005</h4>
-									<p>Intrinsicly transform flexible manufactured products without excellent
-										intellectual capital. Energistically evisculate orthogonal architectures through
-										covalent action items. Assertively incentivize sticky platforms without
-										synergistic materials. </p>
+									<p>Intrinsicly transform flexible manufactured products without excellent intellectual capital. Energistically evisculate orthogonal architectures through covalent action items. Assertively incentivize sticky platforms without synergistic materials. </p>
 								</div>
 								<div class="job last">
 									<h2>International Business Machines (IBM)</h2>
 									<h3>Lead Web Designer</h3>
 									<h4>2001-2004</h4>
-									<p>Globally re-engineer cross-media schemas through viral methods of empowerment.
-										Proactively grow long-term high-impact human capital and highly efficient
-										innovation. Intrinsicly iterate excellent e-tailers with timely e-markets.</p>
+									<p>Globally re-engineer cross-media schemas through viral methods of empowerment. Proactively grow long-term high-impact human capital and highly efficient innovation. Intrinsically iterate excellent e-tailers with timely e-markets.</p>
 								</div>
 
 							</div>
@@ -146,8 +139,7 @@
 				</div>
 			</div>
 			<div id="ft">
-				<p>Jonathan Doe &mdash; <a href="mailto:name@yourdomain.com">name@yourdomain.com</a> &mdash; (313) -
-					867-5309</p>
+				<p><span th:text="${userProfile.getFirstName()}+' '+${userProfile.getLastName()}">[First Name + Last Name]</span> &mdash; <a th:text="${userProfile.getEmail()}">[email]</a> &mdash; <span th:text="${userProfile.getPhoneNum()}">[Phone Number]</span></p>
 			</div>
 		</div>
 	</div>

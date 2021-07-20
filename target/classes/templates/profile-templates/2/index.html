@@ -19,12 +19,15 @@
         <img src="../profile-templates/profile-pic.png" alt="profile pic" id="pic" />
 
         <div id="contact-info" class="vcard">
+				
+            <h1 class="fn" th:text="${userProfile.getFirstName()}+' '+${userProfile.getLastName()}">[First Name + Last Name]</h1>
 
-            <h1 class="fn" th:text="${userProfile.getUserName()}">Doe Family Member</h1>
-
+            <h2 th:text="${userProfile.getJobTitle()}">[Job Title]</h2>
             <p>
-                Cell: <span class="tel">555-666-7777</span><br />
-                Email: <a class="email" href="mailto:jenny.doe@gmail.com">jenny.doe@gmail.com</a>
+                <!-- TODO : href="mailto:${}" -->
+                Cell: <a class="email" th:text="${userProfile.getPhoneNum()}">[Phone Number]</a><br>
+                Email: <a class="email" th:text="${userProfile.getEmail()}" href="#">[email]</a><br>
+                Website: <a class="email" th:text="${userProfile.getWebsite()}" href="#">[Website]</a>
             </p>
         </div>
 

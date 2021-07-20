@@ -5,5 +5,5 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserProfileRepository extends JpaRepository<UserProfile,Integer> {
-    Optional<UserProfile> findByUsername(String username);
+    Optional<UserProfile> findByUserName(String username);
 }

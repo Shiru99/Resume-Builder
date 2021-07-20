@@ -33,7 +33,7 @@ public class HomeController {
 
     @GetMapping("/view/{username}")
     public String viewProfile(@PathVariable String username, Model model){
-        Optional<UserProfile> userProfileOptional = userProfileRepository.findByUsername(username);
+        Optional<UserProfile> userProfileOptional = userProfileRepository.findByUserName(username);
 
         UserProfile userProfile =  userProfileOptional.orElseThrow(
             ()-> new RuntimeErrorException(null, "Not Found "+username)
