@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import io.fall.model.UserProfile;
@@ -35,10 +36,25 @@ public class HomeController {
         return "profile-templates/"+userProfile.getTheme()+"/index";
     }
 
-    @RequestMapping("/edit")
+    @GetMapping("/edit")
     public String editProfile(Model model, Principal principal) {
-        model.addAttribute("userName", principal.getName());
-        return "profile";
+
+        Optional<UserProfile> userProfileOptional = userProfileRepository.findByUserName(principal.getName());
+
+        UserProfile userProfile =  userProfileOptional.orElseThrow(
+            ()-> new RuntimeErrorException(null, "Not Found "+principal.getName())
+        );
+
+        model.addAttribute("userProfile", userProfile);
+        return "profile-edit";
+    }
+
+    @PostMapping("/edit")
+    public String saveProfile(Model model, Principal principal) {
+        
+        /* TODO : Save updated profile */
+
+        return "redirect:/view/"+principal.getName();
     }
 
     @RequestMapping("/*")
