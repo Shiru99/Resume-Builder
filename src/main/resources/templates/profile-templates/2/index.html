@@ -42,11 +42,11 @@
             <br>
             <dt>Experience</dt>
             <dd th:each="experience : ${userProfile.getUserExperiences()}">
-                <h2 th:text="${experience.getPosition()}">[Position]</h2>
+                <h2 th:text="${experience.getCompany()}">[Company]</h2>
                 <h2>
                     <span
-                        th:text="${experience.getCompany()} +',  '+ ${experience.formattedStartDate()}+' - '+ (${experience.isCurrentJob()}? 'Present' : ${experience.formattedEndDate()})">
-                        [company, Start Date - End Date]
+                        th:text="${experience.getPosition()} +',  '+ ${experience.formattedStartDate()}+' - '+ (${experience.isCurrentJob()}? 'Present' : ${experience.formattedEndDate()})">
+                        [Position, Start Date - End Date]
                     </span>
                 </h2>
                 <ul>

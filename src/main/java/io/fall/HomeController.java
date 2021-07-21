@@ -1,5 +1,6 @@
 package io.fall;
 
+import java.security.Principal;
 import java.util.Optional;
 
 import javax.management.RuntimeErrorException;
@@ -20,16 +21,6 @@ public class HomeController {
 
     @Autowired
     UserProfileRepository userProfileRepository;
-    
-    @RequestMapping("/")
-    public String sayWelcome() {
-        return "<h1>Welcome to Resume-Builder</h1>";
-    }
-
-    @RequestMapping("/edit")
-    public String sayWelcomeAdmin() {
-        return "<h1>Welcome to Resume-Builder, Resume-Owner</h1>";
-    }
 
     @GetMapping("/view/{username}")
     public String viewProfile(@PathVariable String username, Model model){
@@ -42,5 +33,16 @@ public class HomeController {
         model.addAttribute("userProfile", userProfile);
     
         return "profile-templates/"+userProfile.getTheme()+"/index";
+    }
+
+    @RequestMapping("/edit")
+    public String editProfile(Model model, Principal principal) {
+        model.addAttribute("userName", principal.getName());
+        return "profile";
+    }
+
+    @RequestMapping("/*")
+    public String sayWelcome() {
+        return "welcome";
     }
 }
