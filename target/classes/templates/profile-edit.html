@@ -12,6 +12,8 @@
 <body>
     <div class="testbox">
         <form action="#" th:action="@{/edit}" th:object="${userProfile}" method="post">
+
+            <!-- Part 1 (Username) : Done -->
             <div class="banner">
                 <h1>Get Ready With Your Resume</h1>
             </div>
@@ -25,55 +27,55 @@
                 <center>
                     <div class="item 1">
 
-                        <p>Select resume template</p>
-                        <select>
-                            <option value="1" selected>1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
+                        <p>Select your profile theme</p>
+                        <select th:field="*{theme}">
+                            <option th:each="i : ${#numbers.sequence(1, 3)}" th:value="${i}" th:text="${'Theme ' + i}"></option>
                         </select>
                     </div>
                 </center>
             </div>
 
-
-
-
+            <!-- Part 2 (User Profile) : Done -->
             <fieldset>
                 <legend>About You</legend>
                 <div class="columns">
                     <div class="item">
-                        <label for="fname">First Name<span>*</span></label>
-                        <input id="fname" type="text" name="fname" />
+                        <label>First Name<span>*</span></label>
+                        <input required type="text" th:field="*{firstName}"/>
                     </div>
                     <div class="item">
-                        <label for="lname"> Last Name<span>*</span></label>
-                        <input id="lname" type="text" name="lname" />
+                        <label >Last Name<span>*</span></label>
+                        <input required type="text" th:field="*{lastName}"/>
                     </div>
                     <div class="item">
-                        <label for="address">Address<span>*</span></label>
-                        <input id="address" type="text" name="address" />
+                        <label >Email Address<span>*</span></label>
+                        <input required type="email" th:field="*{email}"/>
                     </div>
                     <div class="item">
-                        <label for="zip">Zip Code<span>*</span></label>
-                        <input id="zip" type="text" name="zip" required />
+                        <label >Phone Number<span>*</span></label>
+                        <input required type="tel" th:field="*{phoneNum}"/>
                     </div>
                     <div class="item">
-                        <label for="city">City<span>*</span></label>
-                        <input id="city" type="text" name="city" />
+                        <label >Job Title<span>*</span></label>
+                        <input required type="text" th:field="*{jobTitle}"/>
                     </div>
                     <div class="item">
-                        <label for="state">State<span>*</span></label>
-                        <input id="state" type="text" name="state" />
+                        <label >Summary<span>*</span></label>
+                        <input required type="text" th:field="*{summary}"/>
                     </div>
                     <div class="item">
-                        <label for="eaddress">Email Address<span>*</span></label>
-                        <input id="eaddress" type="text" name="eaddress" />
+                        <label >Website</label>
+                        <input type="url" th:field="*{website}"/>
                     </div>
                     <div class="item">
-                        <label for="phone">Phone<span>*</span></label>
-                        <input id="phone" type="tel" name="phone" />
+                        <label >Profile Pic (URL)</label>
+                        <input  type="url" th:field="*{profilePic}"/>
                     </div>
+                    
+                </div>
             </fieldset>
+
+            <!-- Part 1 (Experience) : TODO -->
             <br />
             <fieldset>
                 <legend>Dates</legend>

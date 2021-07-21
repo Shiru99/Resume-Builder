@@ -16,9 +16,9 @@ CREATE TABLE userprofile (
    first_name VARCHAR(50)  NOT NULL,
    last_name VARCHAR(50)  NOT NULL,
    email VARCHAR(50)  NOT NULL,
-   website VARCHAR(50),
    phone_num VARCHAR(50)  NOT NULL,
-   summary VARCHAR(500),
+   summary VARCHAR(500) NOT NULL,
+   website VARCHAR(50),
    profile_pic VARCHAR(200)
 );
 
