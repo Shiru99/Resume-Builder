@@ -159,8 +159,27 @@ input:hover::placeholder {
   flex-wrap: wrap;
 }
 
-.columns div {
+fieldset{
+  border-width: 2px;
+  border-color: #15b98d;
+}
+
+.columns div  {
   width: 48%;
+}
+
+.columns select, p{
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.delete  {
+  width: 100%;
+  margin-left: 25%;
+  margin-right: 25%;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #15b98d; 
 }
 
 [type="date"]::-webkit-calendar-picker-indicator {
@@ -234,7 +253,8 @@ input[type="radio"]:checked + label:after {
   text-align: center;
 }
 
-button {
+button, a{
+  text-decoration:none;
   width: 150px;
   padding: 10px;
   border: none;
@@ -245,7 +265,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+button:hover, a:hover {
   background: #fff;
   color: #15b98d;
   border-width: 1px;
@@ -269,7 +289,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .item i {
-  right: 1%;
+  right: 5%;
   top: 30px;
   z-index: 1;
 }
