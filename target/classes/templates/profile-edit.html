@@ -127,7 +127,7 @@
                 </center>
             </fieldset>
 
-            <!-- Part 4 (Education) : TODO -->
+            <!-- Part 4 (Education) : Done -->
             <br />
             <fieldset>
                 <legend>Education</legend>
@@ -179,47 +179,40 @@
             <fieldset>
                 <legend>Projects</legend>
 
-                <div class="columns" th:each="Experience, stat: *{userExperiences}">
+                <div class="columns" th:each="project, stat: *{userProjects}">
 
                     <div class="item">
-                        <label for="checkindate">Company<span>*</span></label>
-                        <input required type="text" th:field="*{userExperiences[__${stat.index}__].company}" />
+                        <label for="checkindate">Project Name<span>*</span></label>
+                        <input required type="text" th:field="*{userProjects[__${stat.index}__].projectName}" />
                     </div>
                     <div class="item">
-                        <label for="checkindate">Designation<span>*</span></label>
-                        <input required type="text" th:field="*{userExperiences[__${stat.index}__].position}" />
+                        <label for="checkindate">Tools used<span>*</span></label>
+                        <input required type="text" th:field="*{userProjects[__${stat.index}__].tools}" />
                     </div>
 
                     <div class="item">
                         <label for="checkindate">Start Date<span>*</span></label>
-                        <input required type="date" th:field="*{userExperiences[__${stat.index}__].startDate}" />
+                        <input required type="date" th:field="*{userProjects[__${stat.index}__].startDate}" />
                         <i class="fas fa-calendar-alt"></i>
                     </div>
 
                     <div class="item">
                         <label for="checkindate">End Date<span>*</span></label>
-                        <input required type="date" th:field="*{userExperiences[__${stat.index}__].endDate}" />
+                        <input required type="date" th:field="*{userProjects[__${stat.index}__].endDate}" />
                         <i class="fas fa-calendar-alt"></i>
                     </div>
 
                     <div class="item">
                         <label for="checkindate">Description<span>*</span></label>
                         <textarea required type="text" rows="3"
-                            th:field="*{userExperiences[__${stat.index}__].description}"></textarea>
-                    </div>
-                    <div class="item">
-                        <p>Current Job?</p>
-                        <select th:field="*{userExperiences[__${stat.index}__].currentJob}">
-                            <option th:value="1">true</option>
-                            <option th:value="0">false</option>
-                        </select>
+                            th:field="*{userProjects[__${stat.index}__].description}"></textarea>
                     </div>
                     <span class="delete btn-block">
-                        <a th:href="@{'./delete?type=job&index=' + ${stat.index}}">Delete</a>
+                        <a th:href="@{'./delete?type=project&index=' + ${stat.index}}">Delete</a>
                     </span>
                 </div>
                 <center>
-                    <p><a href="./edit?add=job">Add New Job</a></p>
+                    <p><a href="./edit?add=project">Add New Project</a></p>
                 </center>
             </fieldset>
 
