@@ -10,6 +10,23 @@
     body {
         font-family: "Lato", sans-serif
     }
+
+    a:link {
+        color: black;
+    }
+
+    a:visited {
+        color: black;
+    }
+
+    a:hover {
+        color: gray;
+    }
+
+    a:active {
+        color: blue;
+    }
+</style>
 </style>
 
 <body>
@@ -25,15 +42,42 @@
         <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
             <img src="../profile-templates/profile-pic.png">
             <h2 class="w3-wide">Resume Builder</h2>
-            <p class="w3-opacity"><i>blah blah blah</i></p>
-            <p class="w3-justify"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit enim obcaecati possimus nemo vero deleniti facilis ex. Assumenda, repudiandae id!
-            </p>
+            <p class="w3-opacity w3-center"><i>Get ready with your Resume</i></p>
+
+            <ul class="w3-content" style="list-style-type:none;">
+                <li>
+                    <a href="/" style="text-decoration:none">Welcome Page</a>
+                </li>
+                <li>
+                    <a href="/login" style="text-decoration:none">login with Account</a>
+                </li>
+                <li>
+                    <a href="/create" style="text-decoration:none">Create Your Account</a>
+                </li>
+                
+                <li>
+                    <a href="/" style="text-decoration:none">Check Your Resume : /view/username</a>
+                </li>
+                <li>
+                    <a href="/view/JamesD" style="text-decoration:none">Check James' Resume</a>
+                </li>
+                <li>
+                    <a href="/edit" style="text-decoration:none">Edit Your Resume</a>
+                </li>
+                
+                <li>
+                    <a href="/logout" style="text-decoration:none">logout with Account</a>
+                </li>
+            </ul>
         </div>
 
         <div class="w3-black" id="tour">
             <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
                 <h2 class="w3-wide w3-center">About Project</h2>
-                <p class="w3-opacity w3-center"><i>Blah Blah Blah Blah Blah Blah!</i></p><br>
+                <p class="w3-opacity w3-center"><i>Spring Boot Project</i></p>
+                <p class="w3-opacity w3-center">Tools used : Thymeleaf, Spring Boot, Spring Security, JPA-Hibernate, Postgresql</p>
+                <br><br>
+                <p class="w3-center">Thank You</p>
             </div>
         </div>
     </div>

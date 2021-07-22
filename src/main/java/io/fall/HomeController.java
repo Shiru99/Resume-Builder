@@ -7,6 +7,7 @@ import javax.management.RuntimeErrorException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -141,6 +142,7 @@ public class HomeController {
     }
 
     @PostMapping("/create")
+    @Transactional
     public String saveProfile(Model model, @ModelAttribute UserProfile userProfile, @ModelAttribute User user){
         user.setActive(true);
         user.setRoles("ROLE_USER");
@@ -154,8 +156,12 @@ public class HomeController {
         userProfile.setUserName(user.getUsername());
         userProfile.setTheme(1);
 
-        userRepository.save(user);
-        userProfileRepository.save(userProfile);
+        try {
+            userRepository.save(user);
+            userProfileRepository.save(userProfile);
+        } catch (Exception e) {
+            return "/";
+        }
 
         return "redirect:/view/"+userProfile.getUserName();
     }
