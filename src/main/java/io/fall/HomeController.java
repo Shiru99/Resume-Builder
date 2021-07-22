@@ -163,7 +163,7 @@ public class HomeController {
             return "/";
         }
 
-        return "redirect:/view/"+userProfile.getUserName();
+        return "redirect:/login";
     }
 
     @RequestMapping("/*")

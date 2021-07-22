@@ -14,7 +14,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table(name = "userprofile")
@@ -216,16 +215,5 @@ public class UserProfile {
 
     public void addUserProject(UserProject userProject) {
         this.userProjects.add(userProject);
-    }
-
-    @Override
-    public String toString() {
-        return "UserProfile [email=" + email + ", firstName=" + firstName + ", id=" + id + ", jobTitle=" + jobTitle
-                + ", lastName=" + lastName + ", phoneNum=" + phoneNum + ", profilePic=" + profilePic + ", summary="
-                + summary + ", theme=" + theme + ", userEducations=" + userEducations + ", userExperiences="
-                + userExperiences + ", userName=" + userName + ", userProjects=" + userProjects + ", userSkills="
-                + userSkills + ", website=" + website + "]";
-    }
-
-    
+    }    
 }
