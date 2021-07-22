@@ -309,6 +309,34 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border-top: 0px;
   margin-bottom: 10px;
 }
+
+table {
+  margin-left: 8%;
+  margin-right: 8%;
+  display: block;
+}
+tr {
+   display: inline-block;
+   padding: 10px;
+   margin: 5px, 2px, 5px, 2px;
+   border: solid 0.5px #15b98d; 
+   margin: auto;
+}
+td {
+   display: inline;
+}
+
+.del-skill {
+  padding: 5px;
+  margin-top: 50px;
+  text-align: center;
+}
+
+
+/* tr:nth-child(3n+1) {
+   clear: left;
+} */
+
 @media (min-width: 568px) {
   .name-item,
   .city-item {

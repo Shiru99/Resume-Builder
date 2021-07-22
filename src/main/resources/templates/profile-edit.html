@@ -219,87 +219,23 @@
             <br>
             <fieldset>
                 <legend>Skills</legend>
-                <div class="columns">
-                    <div class="item">
-                        <label for="checkindate">Check-in Date <span>*</span></label>
-                        <input id="checkindate" type="date" name="checkindate" />
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-
-                    <div class="item">
-                        <label for="checkoutdate">Check-out Date <span>*</span></label>
-                        <input id="checkoutdate" type="date" name="checkoutdate" />
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                    <div class="item">
-                        <p>Check-in Time </p>
-                        <select>
-                            <option value="" disabled selected>Select time</option>
-                            <option value="1">Morning</option>
-                            <option value="2">Afternoon</option>
-                            <option value="3">Evening</option>
-                        </select>
-                    </div>
-                    <div class="item">
-                        <p>Check-out Time </p>
-                        <select>
-                            <option value="4" disabled selected>Select time</option>
-                            <option value="5">Morning</option>
-                            <option value="6">Afternoon</option>
-                            <option value="7">Evening</option>
-                        </select>
-                    </div>
-                    <div class="item">
-                        <p>How many adults are coming?</p>
-                        <select>
-                            <option value="8" disabled selected>Number of adults</option>
-                            <option value="9">1</option>
-                            <option value="10">2</option>
-                            <option value="11">3</option>
-                            <option value="12">4</option>
-                            <option value="13">5</option>
-                        </select>
-                    </div>
-                    <div class="item">
-                        <p>How many children are coming?</p>
-                        <select>
-                            <option value="14" disabled selected>Number of children</option>
-                            <option value="15">0</option>
-                            <option value="16">1</option>
-                            <option value="17">2</option>
-                            <option value="18">3</option>
-                            <option value="19">4</option>
-                            <option value="19">5</option>
-                        </select>
-                    </div>
-                    <div class="item" style=width:100%>
-                        <label for="room">Number of rooms</label>
-                        <input id="room" type="number" name="room" />
-                    </div>
-                    <div class="item">
-                        <p>Room 1 type</p>
-                        <select>
-                            <option value="20" selected></option>
-                            <option value="21">Standard</option>
-                            <option value="22">Deluxe</option>
-                            <option value="23">Suite</option>
-                        </select>
-                    </div>
-                    <div class="item">
-                        <p>Room 2 type</p>
-                        <select>
-                            <option value="24" selected></option>
-                            <option value="25">Standard</option>
-                            <option value="26">Deluxe</option>
-                            <option value="27">Suite</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="item">
-                    <label for="instruction">Special Instructions</label>
-                    <textarea id="instruction" rows="3"></textarea>
-                </div>
+                <table>
+                    <tr th:each="skill, stat: *{userSkills}">
+                        <td>
+                            <input class="form-control" th:field="*{userSkills[__${stat.index}__].skillName}">
+                            <br>
+                            <center>
+                                <a class="del-skill"
+                                    th:href="@{'./delete?type=skill&index=' + ${stat.index}}">Delete</a>
+                            </center>
+                        </td>
+                    </tr>
+                </table>
+                <center>
+                    <p><a href="./edit?add=skill">Add New Skill</a></p>
+                </center>
             </fieldset>
+            <br>
             <div class="btn-block">
                 <button type="submit" href="/">Submit</button>
             </div>

@@ -28,7 +28,7 @@ VALUES
         'John',
         'Doe',
         'john.doe@gmail.com',
-        'www.johndoe.com',
+        'https://www.johndoe.com',
         '1234567890',
         'I am an outgoing and energetic (ask anybody) young professional, seeking a career that fits my professional skills, personality, and murderous tendencies. My squid-like head is a masterful problem solver and inspires fear in who gaze upon it. I can bring world domination to your organization.',
         'https://st2.depositphotos.com/1009634/7235/v/600/depositphotos_72350117-stock-illustration-no-user-profile-picture-hand.jpg'
@@ -41,7 +41,7 @@ VALUES
         'Jenny',
         'Doe',
         'jenny.doe@gmail.com',
-        'www.jennydoe.com',
+        'https://www.jennydoe.com',
         '1234567890',
         'I am an outgoing and energetic (ask anybody) young professional, seeking a career that fits my professional skills, personality, and murderous tendencies. My squid-like head is a masterful problem solver and inspires fear in who gaze upon it. I can bring world domination to your organization.',
         'https://st2.depositphotos.com/1009634/7235/v/600/depositphotos_72350117-stock-illustration-no-user-profile-picture-hand.jpg'
@@ -53,7 +53,7 @@ VALUES
         'Frontend Developer',
         'James',
         'Doe',
-        'james.doe@gmail.com',
+        'https://james.doe@gmail.com',
         'www.jamesdoe.com',
         '1234567890',
         'Progressively evolve cross-platform ideas before impactful infomediaries. Energistically visualize tactical initiatives before cross-media catalysts for change.',
