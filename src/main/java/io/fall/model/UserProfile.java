@@ -14,6 +14,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+
 @Entity
 @Table(name = "userprofile")
 public class UserProfile {
@@ -33,7 +35,7 @@ public class UserProfile {
 
     @ManyToMany(
         fetch = FetchType.EAGER,
-        cascade = CascadeType.ALL
+        cascade=CascadeType.MERGE
     )
     @JoinTable(
         name = "user_skills",

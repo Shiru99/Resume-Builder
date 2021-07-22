@@ -21,7 +21,6 @@ import io.fall.model.UserProfile;
 import io.fall.model.UserProfileRepository;
 import io.fall.model.UserProject;
 import io.fall.model.UserSkill;
-import jdk.jshell.spi.ExecutionControl.UserException;
 
 // @RestController // rest controller - JSON only
 @Controller
