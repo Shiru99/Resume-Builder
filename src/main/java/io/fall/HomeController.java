@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import io.fall.model.UserEducation;
 import io.fall.model.UserExperience;
 import io.fall.model.UserProfile;
 import io.fall.model.UserProfileRepository;
 import io.fall.model.UserProject;
+import io.fall.model.UserSkill;
 import jdk.jshell.spi.ExecutionControl.UserException;
 
 // @RestController // rest controller - JSON only
@@ -42,13 +44,24 @@ public class HomeController {
     }
 
     @GetMapping("/edit")
-    public String editProfile(Model model, Principal principal) {
+    public String editProfile(Model model, Principal principal,@RequestParam(required = false) String add) {
 
         Optional<UserProfile> userProfileOptional = userProfileRepository.findByUserName(principal.getName());
 
         UserProfile userProfile =  userProfileOptional.orElseThrow(
             ()-> new RuntimeErrorException(null, "Not Found "+principal.getName())
         );
+
+        if ("education".equals(add)) {
+            userProfile.addUserEducations(new UserEducation());
+        } else if ("experience".equals(add)) {
+            userProfile.addUserExperiences(new UserExperience());
+        } else if ("project".equals(add)) {
+            userProfile.addUserProject(new UserProject());
+        }else if("skill".equals(add)){
+            userProfile.addUserSkills(new UserSkill());
+        }
+
         model.addAttribute("userProfile", userProfile);
         return "profile-edit";
     }
