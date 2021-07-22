@@ -47,6 +47,14 @@ public class UserProject {
         return projectName;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setProjectName(String projectName) {
         this.projectName = projectName;
     }

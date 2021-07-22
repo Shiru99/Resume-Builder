@@ -31,7 +31,10 @@ public class UserProfile {
     private String summary;
     private String profilePic;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(
+        fetch = FetchType.EAGER,
+        cascade = CascadeType.ALL
+    )
     @JoinTable(
         name = "user_skills",
         joinColumns = @JoinColumn(name="user_id"),
@@ -74,6 +77,15 @@ public class UserProfile {
         this.website = website;
         this.phoneNum = phoneNum;
         this.summary = summary;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getTheme() {

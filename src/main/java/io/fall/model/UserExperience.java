@@ -45,6 +45,14 @@ public class UserExperience {
         this.endDate = endDate;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public boolean isCurrentJob() {
         return currentJob;
     }
