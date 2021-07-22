@@ -66,6 +66,30 @@ public class HomeController {
         return "profile-edit";
     }
 
+    @GetMapping("/delete")
+    public String delete(Model model, Principal principal, @RequestParam String type, @RequestParam int index) {
+       
+        Optional<UserProfile> userProfileOptional = userProfileRepository.findByUserName(principal.getName());
+
+        UserProfile userProfile =  userProfileOptional.orElseThrow(
+            ()-> new RuntimeErrorException(null, "Not Found "+principal.getName())
+        );
+
+        if ("education".equals(type)) {
+            userProfile.getUserEducations().remove(index);
+        } else if ("experience".equals(type)) {
+            userProfile.getUserExperiences().remove(index);
+            System.out.println("working");
+        } else if ("project".equals(type)) {
+            userProfile.getUserProjects().remove(index);
+        }else if("skill".equals(type)){
+            userProfile.getUserSkills().remove(index);
+        }
+
+        userProfileRepository.save(userProfile);
+        return "redirect:/edit";
+    }
+
     @PostMapping("/edit")
     public String saveProfile(Principal principal,@ModelAttribute UserProfile userProfile) {
         
@@ -94,6 +118,8 @@ public class HomeController {
 
         return "redirect:/view/"+principal.getName();
     }
+
+    
 
     @RequestMapping("/*")
     public String sayWelcome() {
