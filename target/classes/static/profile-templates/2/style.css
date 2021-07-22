@@ -31,6 +31,16 @@ h1 {
   border-bottom: 1px solid #999;
 }
 
+h1 a{
+  color: red;
+  margin: 0 0 16px 0;
+  padding: 0 0 16px 0;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0;
+  border-bottom: 0px solid #999;
+}
+
 h2 {
   font-size: 20px;
   margin: 0 0 6px 0;

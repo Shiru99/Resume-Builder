@@ -3,7 +3,9 @@
 <html xmlns:th="https://www.thymeleaf.org">
 
 <head>
-	<title th:text="${userProfile.getFirstName()}+' '+${userProfile.getLastName()} +' - '+ ${userProfile.getJobTitle()}"> [Title]</title>
+	<title
+		th:text="${userProfile.getFirstName()}+' '+${userProfile.getLastName()} +' - '+ ${userProfile.getJobTitle()}">
+		[Title]</title>
 
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="" />
@@ -22,11 +24,16 @@
 			<div id="hd">
 				<div class="yui-gc">
 					<div id="one">
-						<img id="pic" th:src="${userProfile.getProfilePic() == null || userProfile.getProfilePic().trim() == ''}? '../profile-templates/profile-pic.png' : ${userProfile.getProfilePic()}" alt="profile pic" />
+						<img id="pic"
+							th:src="${userProfile.getProfilePic() == null || userProfile.getProfilePic().trim() == ''}? '../profile-templates/profile-pic.png' : ${userProfile.getProfilePic()}"
+							alt="profile pic" />
 					</div>
 					<div id="two" class="yui-u first">
-						<h1 th:text="${userProfile.getFirstName()}+' '+${userProfile.getLastName()}">[First Name + Last
-							Name]</h1>
+						<h1>
+							<span th:text="${userProfile.getFirstName()}+' '+${userProfile.getLastName()}">[First Name +Last Name]</span>
+							<a th:if="${originalUser}" href="/edit">Edit</a>
+						</h1>
+						
 						<h2 th:text="${userProfile.getJobTitle()}">[Job Title]</h2>
 					</div>
 
@@ -119,7 +126,10 @@
 										-
 										<span th:text="${project.formattedEndDate()}">[End Date]</span>
 									</h4>
-									<p th:text="${project.getDescription()}">[Project Description] Intrinsicly enable optimal core competencies through corporate relationships.Phosfluorescently implement worldwide vortals and client-focused imperatives. Conveniently initiate virtual paradigms and top-line convergence. </p>
+									<p th:text="${project.getDescription()}">[Project Description] Intrinsicly enable
+										optimal core competencies through corporate relationships.Phosfluorescently
+										implement worldwide vortals and client-focused imperatives. Conveniently
+										initiate virtual paradigms and top-line convergence. </p>
 								</div>
 							</div>
 						</div>

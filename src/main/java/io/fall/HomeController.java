@@ -30,7 +30,13 @@ public class HomeController {
     UserProfileRepository userProfileRepository;
 
     @GetMapping("/view/{username}")
-    public String viewProfile(@PathVariable String username, Model model){
+    public String viewProfile(Principal principal,@PathVariable String username, Model model){
+
+        if (principal != null) {
+            boolean originalUser = principal.getName().equals(username);
+            model.addAttribute("originalUser", originalUser);
+        }
+
         Optional<UserProfile> userProfileOptional = userProfileRepository.findByUserName(username);
 
         UserProfile userProfile =  userProfileOptional.orElseThrow(

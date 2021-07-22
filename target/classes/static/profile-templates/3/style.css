@@ -236,6 +236,16 @@ a#pdf:hover {
   margin: 0%;
 }
 
+#two a{
+  color: #990003;
+  margin: 0 0 16px 0;
+  padding: 0 0 16px 0;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0;
+  border-bottom: 0px solid #999;
+}
+
 #three {
   float: left;
   width: 25%;

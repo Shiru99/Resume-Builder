@@ -16,10 +16,11 @@
         <img id="pic" th:src="${userProfile.getProfilePic() == null || userProfile.getProfilePic().trim() == ''}? '../profile-templates/profile-pic.png' : ${userProfile.getProfilePic()}" alt="profile pic" />
 
         <div id="contact-info" class="vcard">
-            <h1 class="fn" th:text="${userProfile.getFirstName()}+' '+${userProfile.getLastName()}">
-                [First Name + Last Name]
+            <h1 class="fn">
+                <span th:text="${userProfile.getFirstName()}+' '+${userProfile.getLastName()}">[First Name + Last Name]</span>
+                <a th:if="${originalUser}" href="/edit">Edit</a>
             </h1>
-
+            <a th:if="${originalUser}" href="/edit">Edit</a>
             <h2 th:text="${userProfile.getJobTitle()}">[Job Title]</h2>
             <p>
                 <!-- TODO : href="mailto:${}" -->
