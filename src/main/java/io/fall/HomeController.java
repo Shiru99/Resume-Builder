@@ -15,11 +15,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import io.fall.model.User;
 import io.fall.model.UserEducation;
 import io.fall.model.UserExperience;
 import io.fall.model.UserProfile;
 import io.fall.model.UserProfileRepository;
 import io.fall.model.UserProject;
+import io.fall.model.UserRepository;
 import io.fall.model.UserSkill;
 
 // @RestController // rest controller - JSON only
@@ -28,6 +30,8 @@ public class HomeController {
 
     @Autowired
     UserProfileRepository userProfileRepository;
+    @Autowired
+    UserRepository userRepository;
 
     @GetMapping("/view/{username}")
     public String viewProfile(Principal principal,@PathVariable String username, Model model){
@@ -124,7 +128,37 @@ public class HomeController {
         return "redirect:/view/"+principal.getName();
     }
 
-    
+    boolean notAvailable = false;
+
+    @GetMapping("/create")
+    public String createProfile(Model model){
+        UserProfile userProfile = new UserProfile();
+        User user = new User();
+        model.addAttribute("notAvailable", notAvailable);
+        model.addAttribute("user", user);
+        model.addAttribute("userProfile", userProfile);
+        return"profile-create";
+    }
+
+    @PostMapping("/create")
+    public String saveProfile(Model model, @ModelAttribute UserProfile userProfile, @ModelAttribute User user){
+        user.setActive(true);
+        user.setRoles("ROLE_USER");
+
+        Optional<User> existingUserOptional =  userRepository.findByUsername(user.getUsername());
+        if(existingUserOptional.isPresent()){
+            notAvailable = true;
+            return "redirect:/create";
+        }
+
+        userProfile.setUserName(user.getUsername());
+        userProfile.setTheme(1);
+
+        userRepository.save(user);
+        userProfileRepository.save(userProfile);
+
+        return "redirect:/view/"+userProfile.getUserName();
+    }
 
     @RequestMapping("/*")
     public String sayWelcome() {

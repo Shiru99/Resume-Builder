@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title>Create User Profile</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="../profile-templates/profile-edit.css" />
+</head>
+
+<body>
+    <div class="testbox">
+        <form action="#" th:action="@{/create}" th:object="${userProfile}" method="post">
+
+
+            <!-- Part 1 (User) : Todo -->
+            <div class="banner">
+                <h1>Create Your Profile</h1>
+            </div>
+            <br>
+            <br>
+            
+            <fieldset th:object="${user}">
+                <legend>User Details</legend>
+                
+                <div class="columns">
+                    
+                    <div class="item">
+                        <label>Username
+                            <span>*</span>
+                            <span th:if="${notAvailable} == true">Already Taken</span>
+                        </label>
+                        <input required type="text" th:field="*{username}" />
+                    </div>
+                    <div class="item">
+                        <label>password<span>*</span></label>
+                        <input required type="password" th:field="*{password}" />
+                    </div>
+                </div>
+            </fieldset>
+            <br>
+
+            <!-- Part 2 (User Profile) : Done -->
+            <fieldset>
+                <legend>About You</legend>
+                <div class="columns">
+                    <div class="item">
+                        <label>First Name<span>*</span></label>
+                        <input required type="text" th:field="*{firstName}" />
+                    </div>
+                    <div class="item">
+                        <label>Last Name<span>*</span></label>
+                        <input required type="text" th:field="*{lastName}" />
+                    </div>
+                    <div class="item">
+                        <label>Email Address<span>*</span></label>
+                        <input required type="email" th:field="*{email}" />
+                    </div>
+                    <div class="item">
+                        <label>Phone Number<span>*</span></label>
+                        <input required type="tel" th:field="*{phoneNum}" />
+                    </div>
+                    <div class="item">
+                        <label>Designation<span>*</span></label>
+                        <input required type="text" th:field="*{jobTitle}" />
+                    </div>
+
+                    <div class="item">
+                        <label>Website</label>
+                        <input type="url" th:field="*{website}" />
+                    </div>
+                    <div class="item">
+                        <label>Summary<span>*</span></label>
+                        <textarea required type="text" rows="3" th:field="*{summary}"></textarea>
+                    </div>
+                    <div class="item">
+                        <label>Profile Pic (URL)</label>
+                        <input type="url" th:field="*{profilePic}" />
+                    </div>
+                </div>
+            </fieldset>
+            <div class="btn-block">
+                <button type="submit" href="/">Create</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

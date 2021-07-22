@@ -3,7 +3,9 @@ INSERT INTO
 VALUES
     (1, 'JohnD', '1234', 'true', 'ROLE_USER'),
     (2, 'JennyD', '1234', 'true', 'ROLE_USER'),
-    (3, 'JamesD', '1234', 'true', 'ROLE_USER');
+    (3, 'JamesD', '1234', 'true', 'ROLE_USER'),
+    (4, 'JollyD', '1234', 'true', 'ROLE_USER')
+;
 
 INSERT INTO
     userprofile (

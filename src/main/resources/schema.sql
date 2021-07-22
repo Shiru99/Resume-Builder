@@ -10,7 +10,7 @@ CREATE TABLE users (
 
 CREATE TABLE userprofile (
    id   INT     PRIMARY KEY     NOT NULL,
-   theme INT NOT NULL,
+   theme INT DEFAULT 1,
    user_name VARCHAR(50) UNIQUE NOT NULL,
    job_title VARCHAR(50)  NOT NULL,
    first_name VARCHAR(50)  NOT NULL,
