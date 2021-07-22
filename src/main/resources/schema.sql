@@ -2,31 +2,31 @@ DROP TABLE IF EXISTS users, userprofile, user_experience, user_education, user_p
 
 CREATE TABLE users (
    id   INT     PRIMARY KEY     NOT NULL,
-   username VARCHAR(50) UNIQUE NOT NULL,
-   password VARCHAR(50) NOT NULL,
+   username VARCHAR(255) UNIQUE NOT NULL,
+   password VARCHAR(255) NOT NULL,
    active BOOLEAN NOT NULL,
-   roles VARCHAR(50)
+   roles VARCHAR(255)
 );
 
 CREATE TABLE userprofile (
    id   INT     PRIMARY KEY     NOT NULL,
    theme INT DEFAULT 1,
-   user_name VARCHAR(50) UNIQUE NOT NULL,
-   job_title VARCHAR(50)  NOT NULL,
-   first_name VARCHAR(50)  NOT NULL,
-   last_name VARCHAR(50)  NOT NULL,
-   email VARCHAR(50)  NOT NULL,
-   phone_num VARCHAR(50)  NOT NULL,
+   user_name VARCHAR(255) UNIQUE NOT NULL,
+   job_title VARCHAR(255)  NOT NULL,
+   first_name VARCHAR(255)  NOT NULL,
+   last_name VARCHAR(255)  NOT NULL,
+   email VARCHAR(255)  NOT NULL,
+   phone_num VARCHAR(255)  NOT NULL,
    summary VARCHAR(500) NOT NULL,
-   website VARCHAR(50),
-   profile_pic VARCHAR(200)
+   website VARCHAR(255),
+   profile_pic VARCHAR(500)
 );
 
 CREATE TABLE user_education (
    id   INT     PRIMARY KEY     NOT NULL,
-   college VARCHAR(100) NOT NULL,
-   degree VARCHAR(100) NOT NULL,
-   grade VARCHAR(100) NOT NULL,
+   college VARCHAR(255) NOT NULL,
+   degree VARCHAR(255) NOT NULL,
+   grade VARCHAR(255) NOT NULL,
    start_date DATE NOT NULL,
    end_date DATE NOT NULL,
    current_education BOOLEAN DEFAULT false,
@@ -36,8 +36,8 @@ CREATE TABLE user_education (
 
 CREATE TABLE user_experience (
    id   INT     PRIMARY KEY     NOT NULL,
-   company VARCHAR(100) NOT NULL,
-   position VARCHAR(100) NOT NULL,
+   company VARCHAR(255) NOT NULL,
+   position VARCHAR(255) NOT NULL,
    description VARCHAR(500) NOT NULL,
    start_date DATE NOT NULL,
    end_date DATE NOT NULL,
@@ -48,8 +48,8 @@ CREATE TABLE user_experience (
 
 CREATE TABLE user_project (
    id   INT     PRIMARY KEY     NOT NULL,
-   project_name VARCHAR(100) NOT NULL,
-   tools VARCHAR(100) NOT NULL,
+   project_name VARCHAR(255) NOT NULL,
+   tools VARCHAR(500) NOT NULL,
    description VARCHAR(500) NOT NULL,
    start_date DATE NOT NULL,
    end_date DATE NOT NULL,
@@ -59,7 +59,7 @@ CREATE TABLE user_project (
 
 CREATE TABLE skill(
    id INT     PRIMARY KEY     NOT NULL,  
-   skill_name VARCHAR(50)
+   skill_name VARCHAR(255)
 );
 
 CREATE TABLE user_skills(

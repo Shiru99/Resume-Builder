@@ -1,11 +1,12 @@
 INSERT INTO
     users (id, username, password, active, roles)
 VALUES
-    (1, 'JohnD', '1234', 'true', 'ROLE_USER'),
-    (2, 'JennyD', '1234', 'true', 'ROLE_USER'),
-    (3, 'JamesD', '1234', 'true', 'ROLE_USER'),
-    (4, 'JollyD', '1234', 'true', 'ROLE_USER')
+    (1, 'JohnD', '{bcrypt}$2a$10$jBxirFzCFwYVAskGcBMINuxjxJuD/gXIWqzkkCjtRhFpkzm9H1NPO', 'true', 'ROLE_USER'),
+    (2, 'JennyD', '{bcrypt}$2a$10$jBxirFzCFwYVAskGcBMINuxjxJuD/gXIWqzkkCjtRhFpkzm9H1NPO', 'true', 'ROLE_USER'),
+    (3, 'JamesD', '{bcrypt}$2a$10$jBxirFzCFwYVAskGcBMINuxjxJuD/gXIWqzkkCjtRhFpkzm9H1NPO', 'true', 'ROLE_USER'),
+    (4, 'JollyD', '{bcrypt}$2a$10$jBxirFzCFwYVAskGcBMINuxjxJuD/gXIWqzkkCjtRhFpkzm9H1NPO', 'true', 'ROLE_USER')
 ;
+-- password - 1234
 
 INSERT INTO
     userprofile (
