@@ -3,13 +3,12 @@ INSERT INTO
 VALUES
     (1, 'JohnD', '{bcrypt}$2a$10$jBxirFzCFwYVAskGcBMINuxjxJuD/gXIWqzkkCjtRhFpkzm9H1NPO', 'true', 'ROLE_USER'),
     (2, 'JennyD', '{bcrypt}$2a$10$jBxirFzCFwYVAskGcBMINuxjxJuD/gXIWqzkkCjtRhFpkzm9H1NPO', 'true', 'ROLE_USER'),
-    (3, 'JamesD', '{bcrypt}$2a$10$jBxirFzCFwYVAskGcBMINuxjxJuD/gXIWqzkkCjtRhFpkzm9H1NPO', 'true', 'ROLE_USER'),
-    (4, 'JollyD', '{bcrypt}$2a$10$jBxirFzCFwYVAskGcBMINuxjxJuD/gXIWqzkkCjtRhFpkzm9H1NPO', 'true', 'ROLE_USER')
+    (3, 'JamesD', '{bcrypt}$2a$10$jBxirFzCFwYVAskGcBMINuxjxJuD/gXIWqzkkCjtRhFpkzm9H1NPO', 'true', 'ROLE_USER')
 ;
 -- password - 1234
 
 INSERT INTO
-    userprofile (
+    user_profile (
         id,
         theme,
         user_name,
@@ -56,8 +55,8 @@ VALUES
         'Frontend Developer',
         'James',
         'Doe',
-        'https://james.doe@gmail.com',
-        'www.jamesdoe.com',
+        'james.doe@gmail.com',
+        'https://www.jamesdoe.com',
         '1234567890',
         'Progressively evolve cross-platform ideas before impactful infomediaries. Energistically visualize tactical initiatives before cross-media catalysts for change.',
         ''
@@ -276,7 +275,7 @@ VALUES
     );
 
 INSERT INTO
-    skill (id, skill_name)
+    skills (id, skill_name)
 VALUES
     (1, 'HTML'),
     (2, 'CSS'),

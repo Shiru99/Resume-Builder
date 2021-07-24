@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "UserExperience")
+@Table(name = "user_experience")
 public class UserExperience {
     
     @Id

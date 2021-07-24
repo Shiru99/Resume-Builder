@@ -121,6 +121,8 @@ public class HomeController {
     public String saveProfile(Principal principal, @ModelAttribute UserProfile userProfile) {
 
         try {
+
+            
             Optional<UserProfile> originalUserProfileOptional = userProfileRepository
                     .findByUserName(principal.getName());
 
@@ -131,14 +133,18 @@ public class HomeController {
             userProfile.setUserName(principal.getName());
 
             for (UserExperience experience : userProfile.getUserExperiences()) {
+                System.out.println(experience.getEndDate());
                 experience.setUserProfile(userProfile);
+
             }
 
             for (UserEducation education : userProfile.getUserEducations()) {
+                System.out.println(education.getEndDate());
                 education.setUserProfile(userProfile);
             }
 
             for (UserProject project : userProfile.getUserProjects()) {
+                System.out.println(project.getEndDate());
                 project.setUserProfile(userProfile);
             }
 
