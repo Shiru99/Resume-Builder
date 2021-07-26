@@ -69,14 +69,16 @@
           <span th:text="${userProfile.getFirstName()}">[First Name]</span>
           <span class="text-primary" th:text="${userProfile.getLastName()}">[Last Name]</span>
         </h1>
-        <a th:if="${originalUser}" href="/edit">Edit</a>
         <div class="mb-2">
+          <h3 th:text="${userProfile.getJobTitle()}">[Job Title]</h3>
+          <a th:if="${originalUser}" href="/edit">Edit</a>
+          <br><br>
+
           <br><a href="#" th:text="${userProfile.getPhoneNum()}">[Phone Number]</a><br>
           <a th:text="${userProfile.getEmail()}" href="#">[email]</a><br>
           <a th:text="${userProfile.getWebsite()}" href="#">[Website]</a>
         </div> <br>
-        <p class="lead mb-1" th:text="${userProfile.getSummary()}">[Default Summary] John Doe is writing some
-          description here. Aah, Kadak Hai!</p>
+        <p class="lead mb-1" th:text="${userProfile.getSummary()}">[Default Summary] John Doe is writing some description here. Aah, Kadak Hai!</p>
     </section>
     <hr class="m-0">
 

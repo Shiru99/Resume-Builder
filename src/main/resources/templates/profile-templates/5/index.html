@@ -1,29 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Tarun-Index</title>
-  <meta content="" name="description">
+  <title th:text="${userProfile.getFirstName()}+' '+${userProfile.getLastName()} +' - '+ ${userProfile.getJobTitle()}">
+    [Title]
+  </title>
+  <meta name="description" content="Resume Template 5" />
   <meta content="" name="keywords">
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/venobox/1.8.6/venobox.css">
   <link href="https://cdn.boomcdn.com/libs/owl-carousel/2.3.4/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/3.0.0-beta.6/aos.css" rel="stylesheet">
-
-  <link href="style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link href="../profile-templates/5/style.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: iPortfolio - v1.4.0
@@ -43,8 +45,16 @@
     <div class="d-flex flex-column">
 
       <div class="profile">
-        <img src="https://github.githubassets.com/images/modules/logos_page/Octocat.png" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Tarun Goyal</a></h1>
+        <br>
+        <img id="pic" class="img-fluid rounded-circle"
+          th:src="${userProfile.getProfilePic() == null || userProfile.getProfilePic().trim() == ''}? '../profile-templates/profile-pic.png' : ${userProfile.getProfilePic()}"
+          alt="profile pic" />
+
+        <h1 class="text-light"><a href="#"
+            th:text="${userProfile.getFirstName()} +' '+ ${userProfile.getLastName()}">[First Name + Last Name]</a></h1>
+        <center>
+          <a th:if="${originalUser}" href="/edit">Edit</a>
+        </center>
       </div>
 
       <nav class="nav-menu">
@@ -66,8 +76,10 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
     <div class="hero-container" data-aos="fade-in">
-      <h1>Tarun Goyal</h1>
-      <p class="typed" data-typed-items="3rd Year Undergraduate at IIT Dharwad"></p>
+      <h1 th:text="${userProfile.getFirstName()} +' '+ ${userProfile.getLastName()}">[First Name + Last Name]</h1>
+
+      <!-- th:text="${userProfile.getJobTitle()}"> -->
+      <p class="typed" data-typed-items="" th:text="${userProfile.getJobTitle()}+'    '">[Job Title]</p>
     </div>
   </section><!-- End Hero -->
 
@@ -79,134 +91,126 @@
 
         <div class="section-title">
           <h2>About</h2>
-          <p>
-            I am Tarun goyal, a 3rd-year Computer Science undergraduate at IIT Dharwad. I am a web developer with good industry experience.
-            I am always ready to solve real-world challenges. I love to work in a competitive environment where I get to learn a lot from my peers. 
-            I believe in evolving with the time that's why I always keep an eye on recent advancements in any field.I am exploring new technologies in computer science to build my career in them.
-            I like to read books other than my domain and play volleyball in my leisure time.</p>
+          <p style="width: 75%;" th:text="${userProfile.getSummary()}">[Default Summary]
+            D D D Progressively volve cross-platform ideas before impactful infomediaries. Energistically visualize
+            tactical initiatives before cross-media catalysts for change.
+          </p>
         </div>
-      
+
+        <div class="info">
+
+          <div class="phone">
+            <i class="fas fa-phone"></i>
+            <h5>Phone:</h5>
+            <p>
+              <a th:text="${userProfile.getPhoneNum()}" href="#">[Phone Number]</a>
+            </p>
+          </div>
+
+          <div class="email">
+            <i class="fas fa-envelope"></i>
+            <h5>Email:</h5>
+            <p><a th:text="${userProfile.getEmail()}" href="#">[email]</a></p>
+          </div>
+
+
+          <div class="website">
+            <i class="fas fa-globe"></i>
+            <h5>Website:</h5>
+            <p><a th:text="${userProfile.getWebsite()}" href="#">[Website]</a></p>
+
+          </div>
+
+        </div>
       </div>
     </section><!-- End About Section -->
 
-      <!-- ======= Education Section ======= -->
-      <section id="education" class="resume section-bg">
-        <div class="container">
-  
-          <div class="section-title">
-            <h2>Education</h2>
-          </div>
-  
-          <div class="row">
-            <div class="" data-aos="fade-up">
-              <div class="resume-item">
-                <h4>Bachelor of Technology (Computer Science)</h4>
-                <h5>2018 - 2022 (Expected)</h5>
-                <p><em>Indian Institute of Technology, Dharwad, India</em></p>
-                <p>CGPA - 8.40</p>
-              </div>
-            
-            </div>
-            
-          </div>
-  
+
+    <!-- ======= Education Section ======= -->
+    <section id="education" class="resume section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Education</h2>
         </div>
-      </section><!-- End Resume Section -->
+
+        <div class="row" th:each="education : ${userProfile.getUserEducations()}">
+
+          <div class="col-lg-6" data-aos="fade-up">
+            <div class="resume-item">
+              <h4 th:text="${education.getDegree()}">[Degree]</h4>
+              <h5 class="subDetails">
+                <span th:text="${education.formattedStartDate()}">[Start Date]</span>
+                -
+                <span th:text="${education.isCurrentEducation()}? 'Present' : ${education.formattedEndDate()}">
+                  [End Date] </span>
+              </h5>
+              <p><em th:text="${education.getCollege()}">[college]</em></p>
+              <p th:text="${education.getGrade()}">[Grades]</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Resume Section -->
 
     <!-- ======= Skills Section ======= -->
-    <section id="skills" class="skills section-bg">
+    <section id="skills" class="skills">
       <div class="container">
 
         <div class="section-title">
           <h2>Skills</h2>
         </div>
-        <div class="row skills-content">
 
-          <div class="col-lg-6" data-aos="fade-up">
-
-            <div class="progress">
-              <span class="skill">NodeJs</span>
+        <span th:each="i : ${#numbers.sequence(0, 2)}">
+          <ul class="skills">
+            <div th:each="skill, index : ${userProfile.getUserSkills()}" th:unless="${(index.index-i) % 3}">
+              <p data-aos="fade-up" data-aos-delay="50" th:text="${skill.getSkillName()}">[Skill Name]</p>
             </div>
+          </ul>
+          <hr style="width: 50%;" />
+          <br>
+        </span>
 
-            <div class="progress">
-              <span class="skill">NodeJs</span>
-            </div>
-
-            <div class="progress">
-              <span class="skill">NodeJs</span>
-            </div>
-
-            <div class="progress">
-              <span class="skill">NodeJs</span>
-            </div>
-
-            <div class="progress">
-              <span class="skill">NodeJs</span>
-            </div>
-          
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-
-            <div class="progress">
-              <span class="skill">NodeJs</span>
-            </div>
-
-            <div class="progress">
-              <span class="skill">NodeJs</span>
-            </div>
-
-            <div class="progress">
-              <span class="skill">NodeJs</span>
-            </div>
-
-            <div class="progress">
-              <span class="skill">NodeJs</span>
-            </div>
-
-            <div class="progress">
-              <span class="skill">NodeJs</span>
-            </div>
-            
-
-          </div>
-
-
-        </div>
+      </div>
 
       </div>
     </section><!-- End Skills Section -->
 
     <!-- ======= experience Section ======= -->
-    <section id="resume" class="resume">
+    <section id="resume" class="resume section-bg">
       <div class="container">
 
         <div class="section-title">
           <h2>Experience</h2>
         </div>
 
-        <div class="row">
+        <div class="row" th:each="experience : ${userProfile.getUserExperiences()}">
           <div class="" data-aos="fade-up" data-aos-delay="100">
-            
-            
+
+
             <div class="resume-item">
-              <h4>Mean Stack Developer (Intern)</h4>
-              <h5>1 Aug 2020 - 31 Aug 2020</h5>
-              <p><em>Webshark Web Services, Bengaluru, IND </em></p>
+              <h4 th:text="${experience.getPosition()}">[Position]</h4>
+              <h5 style="float: right;">
+                <span th:text="${experience.formattedStartDate()}">[Start Date]</span>
+                -
+                <span th:text="${experience.isCurrentJob()}? 'Present' : ${experience.formattedEndDate()}">[End
+                  Date]
+                </span>
+              </h5>
+              <p><em th:text="${experience.getCompany()}">[company] </em></p>
               <ul>
-                <li><p align="justify">Completed one web project for the companay. Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati aliquid laboriosam necessitatibus quae? Ipsum consequuntur vitae, corporis, fugiat ab ullam laudantium dolores alias, eos mollitia aliquam molestias aspernatur nam repellendus.</p></li>
+                <li>
+                  <p align="justify" th:text="${experience.getDescription()}">
+                    [Work Description] Intrinsicly enable optimal core competencies through
+                    corporate relationships.Phosfluorescently implement worldwide vortals and
+                    client-focused imperatives.
+                    Conveniently initiate virtual paradigms and top-line convergence. </p>
+                </li>
               </ul>
             </div>
 
-            <div class="resume-item">
-              <h4>Mean Stack Developer (Intern)</h4>
-              <h5>1 Aug 2020 - 31 Aug 2020</h5>
-              <p><em>Webshark Web Services, Bengaluru, IND </em></p>
-              <ul>
-                <li><p align="justify">Completed one web project for the companay. Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati aliquid laboriosam necessitatibus quae? Ipsum consequuntur vitae, corporis, fugiat ab ullam laudantium dolores alias, eos mollitia aliquam molestias aspernatur nam repellendus.</p></li>
-              </ul>
-            </div>
-          
           </div>
         </div>
 
@@ -214,56 +218,84 @@
     </section><!-- End Resume Section -->
 
     <!-- ======= Project Section ======= -->
-    <section id="portfolio" class="resume section-bg">
+    <section id="portfolio" class="resume" >
       <div class="container">
 
         <div class="section-title">
           <h2>Projects</h2>
 
-          <div class="flex-column">
+          <div class="flex-column" th:each="project: ${userProfile.getUserProjects()}">
             <div class="" data-aos="fade-up" data-aos-delay="100">
-              
+
               <div class="resume-item">
-                <h4>Mean Stack Developer (Intern)</h4>
-                <h5>1 Aug 2020 - 31 Aug 2020</h5>
-                <p><em>Webshark Web Services, Bengaluru, IND </em></p>
+                <h4 th:text="${project.getProjectName()}">[Project Name]</h4>
+
+                <h5 style="float: right;">
+                  <span th:text="${project.formattedStartDate()}">[Start Date]</span>
+                  -
+                  <span th:text="${project.formattedEndDate()}">[End Date]</span>
+                </h5>
+
+                <p th:text="${project.getTools()}">
+                  
+                  [Tools used]
+                </p>
+                <br>
+               
                 <ul>
-                  <li><p align="justify">Completed one web project for the companay. Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati aliquid laboriosam necessitatibus quae? Ipsum consequuntur vitae, corporis, fugiat ab ullam laudantium dolores alias, eos mollitia aliquam molestias aspernatur nam repellendus.</p></li>
+                  <li>
+                    <p align="justify" th:text="${project.getDescription()}">[Project Description] Intrinsicly enable optimal core competencies through corporate relationships.Phosfluorescently
+                      implement worldwide vortals and client-focused imperatives. Conveniently
+                      initiate virtual paradigms and top-line convergence.</p>
+                  </li>
                 </ul>
               </div>
-              </div>
-
-              
-            
             </div>
-          </div>
 
+
+
+          </div>
         </div>
+
+      </div>
 
     </section><!-- End Portfolio Section -->
 
+    <section class="section-bg" data-aos="fade-up" data-aos-delay="80">
+      <center>
+        <h3>Thank You</h3>
+        <div >
+          <p><span th:text="${userProfile.getFirstName()}+' '+${userProfile.getLastName()}">[First Name + Last
+              Name]</span> &mdash; <a href="#" th:text="${userProfile.getEmail()}">[email]</a> &mdash; <span
+              th:text="${userProfile.getPhoneNum()}">[Phone Number]</span></p>
+        </div>
 
-       
+      </center>
 
+    </section>
 
   </main><!-- End #main -->
 
-  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+  <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/venobox/1.8.1/venobox.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/aos/3.0.0-beta.6/aos.js"></script>
-  
+
 
   <!-- Template Main JS File -->
-  <script src="main.js"></script>
+  <script src="../profile-templates/5/main.js"></script>
 
 </body>
 

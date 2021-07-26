@@ -3,7 +3,10 @@ INSERT INTO
 VALUES
     (1, 'JohnD', '{bcrypt}$2a$10$jBxirFzCFwYVAskGcBMINuxjxJuD/gXIWqzkkCjtRhFpkzm9H1NPO', 'true', 'ROLE_USER'),
     (2, 'JennyD', '{bcrypt}$2a$10$jBxirFzCFwYVAskGcBMINuxjxJuD/gXIWqzkkCjtRhFpkzm9H1NPO', 'true', 'ROLE_USER'),
-    (3, 'JamesD', '{bcrypt}$2a$10$jBxirFzCFwYVAskGcBMINuxjxJuD/gXIWqzkkCjtRhFpkzm9H1NPO', 'true', 'ROLE_USER')
+    (3, 'JamesD', '{bcrypt}$2a$10$jBxirFzCFwYVAskGcBMINuxjxJuD/gXIWqzkkCjtRhFpkzm9H1NPO', 'true', 'ROLE_USER'),
+    (4, 'JerryD', '{bcrypt}$2a$10$jBxirFzCFwYVAskGcBMINuxjxJuD/gXIWqzkkCjtRhFpkzm9H1NPO', 'true', 'ROLE_USER'),
+    (5, 'JeanD', '{bcrypt}$2a$10$jBxirFzCFwYVAskGcBMINuxjxJuD/gXIWqzkkCjtRhFpkzm9H1NPO', 'true', 'ROLE_USER'),
+    (6, 'JackieD', '{bcrypt}$2a$10$jBxirFzCFwYVAskGcBMINuxjxJuD/gXIWqzkkCjtRhFpkzm9H1NPO', 'true', 'ROLE_USER')
 ;
 -- password - 1234
 
