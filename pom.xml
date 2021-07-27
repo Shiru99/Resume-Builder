@@ -11,7 +11,7 @@
 
 	<groupId>io.fall</groupId>
 	<artifactId>resume-builder</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<name>Resume-Builder</name>
 	<description>Resume Building Website using Spring Boot</description>
 	<properties>
