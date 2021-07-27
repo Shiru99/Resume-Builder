@@ -1,13 +1,13 @@
 io/fall/MyUserDetailsService.class
 io/fall/model/UserProfile.class
 io/fall/model/UserEducation.class
-io/fall/model/UserRepository.class
 io/fall/HomeController.class
 io/fall/model/UserSkill.class
 io/fall/model/UserProject.class
+io/fall/ResumeBuilderApplication.class
+io/fall/model/UserRepository.class
 io/fall/model/MyUserDetails.class
 io/fall/model/UserExperience.class
 io/fall/model/User.class
 io/fall/SecurityConfig.class
-io/fall/ResumeBuilderApplication.class
 io/fall/model/UserProfileRepository.class

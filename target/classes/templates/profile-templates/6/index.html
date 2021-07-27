@@ -56,9 +56,9 @@
                   </span>
                   <span th:text="${userProfile.getFirstName()}+' '+${userProfile.getLastName()}">[First Name +Last Name]
                   </span>
-                  
+
                 </a>
-                
+
               </div>
             </div>
           </div>
@@ -161,7 +161,7 @@
             <div class="text">
               <h4 class="subheading" th:text="${experience.getPosition()}">[Position]</h4>
               <h2 class="heading"><a href="#" th:text="${experience.getCompany()}">[company]</a>
-                <span  style="float: right; font-size: large;">
+                <span style="float: right; font-size: large;">
                   <span th:text="${experience.formattedStartDate()}">[Start Date]</span> - <span
                     th:text="${experience.isCurrentJob()}? 'Present' : ${experience.formattedEndDate()}">[End
                     Date]
@@ -185,18 +185,19 @@
           </div>
           <div class="row no-gutters justify-content-center ">
             <span th:each="i : ${#numbers.sequence(0, 2)}">
-              <ul class="skills"  >
+              <ul class="skills">
                 <div th:each="skill, index : ${userProfile.getUserSkills()}" th:unless="${(index.index-i) % 3}">
-                  <li style="margin: 10px; color: white; font-size: larger;" data-aos="fade-up" data-aos-delay="50" th:text="${skill.getSkillName()}">[Skill Name]</li>
+                  <li style="margin: 10px; color: white; font-size: larger;" data-aos="fade-up" data-aos-delay="50"
+                    th:text="${skill.getSkillName()}">[Skill Name]</li>
                 </div>
               </ul>
               <hr style="width: 50%;" />
-             
+
             </span>
             <br><br>
             <hr style="width: 50%;" />
             <br><br>
-            </div>
+          </div>
 
           <div class="row justify-content-center mb-5 pb-5">
             <div class="col-md-7 text-center heading-section ftco-animate">
@@ -245,7 +246,7 @@
                   <h4>Website: <a th:text="${userProfile.getWebsite()}" href="#">[Website]</a></h4>
                   <hr>
                 </span>
-                
+
               </div>
             </div>
           </div>
@@ -264,22 +265,28 @@
 
   </div>
 
-  <script src="../profile-templates/6/js/main.js"></script>
 
-  <script src="../profile-templates/6/js/jquery.min.js"></script>
-  <script src="../profile-templates/6/js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="../profile-templates/6/js/popper.min.js"></script>
-  <script src="../profile-templates/6/js/bootstrap.min.js"></script>
-  <script src="../profile-templates/6/js/jquery.easing.1.3.js"></script>
-  <script src="../profile-templates/6/js/jquery.waypoints.min.js"></script>
-  <script src="../profile-templates/6/js/jquery.stellar.min.js"></script>
-  <script src="../profile-templates/6/js/owl.carousel.min.js"></script>
-  <script src="../profile-templates/6/js/jquery.magnific-popup.min.js"></script>
-  <script src="../profile-templates/6/js/aos.js"></script>
-  <script src="../profile-templates/6/js/jquery.animateNumber.min.js"></script>
-  <script src="../profile-templates/6/js/scrollax.min.js"></script>
-  <script src="../profile-templates/6/js/bootstrap-datepicker.js"></script>
-  <script src="../profile-templates/6/js/jquery.timepicker.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="  https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.0.1/jquery-migrate.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/stellar.js/0.6.2/jquery.stellar.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/umd/popper.min.js">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.js">
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.0/jquery.waypoints.min.js"></script>
+
+
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/aos/3.0.0-beta.6/aos.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/scrollax@1.0.0/scrollax.min.js"></script>
+
+
+  <script src="../profile-templates/6/main.js"></script>
+
 
 </body>
 
