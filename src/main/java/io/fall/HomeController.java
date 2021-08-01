@@ -203,6 +203,11 @@ public class HomeController {
         return "redirect:/login";
     }
 
+    @RequestMapping("/error")
+    public String sayError() {
+        return "error-page";
+    }
+
     @RequestMapping("/*")
     public String sayWelcome() {
         return "welcome";
