@@ -1,0 +1,70 @@
+# DB-Secret
+apiVersion: v1
+kind: Secret
+metadata:
+  name: db-secretes
+type: Opaque
+data:
+  db-username: dXNlcg==    # $ base 64 encoded - $ echo -n "user" | base64
+  db-password: MTIzNA==    # $ base 64 encoded - $ echo -n "1234" | base64
+---
+
+# DB-Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: postgres
+  name: postgres-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:  
+      app: postgres-db
+  template:
+    metadata:
+      labels:
+        app: postgres-db
+    spec:
+      containers:
+      - name: postgres-db
+        image: postgres:latest
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: "0.2"
+        imagePullPolicy: IfNotPresent
+        ports:
+        - protocol: TCP
+          containerPort: 5432
+        env:
+        - name: POSTGRES_DB
+          value: resumebuilder
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: db-secretes
+              key: db-username 
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secretes
+              key: db-password
+
+---
+
+# DB-Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: db-service
+spec:
+  selector: 
+    app: postgres-db
+  ports:
+  - protocol: TCP
+    port: 5432
+    targetPort: 5432
+---
+        
+

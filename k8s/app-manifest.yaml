@@ -1,0 +1,90 @@
+# App-Config
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-configmap
+data:
+  database_url: jdbc:postgresql://db-service.default.svc.cluster.local:5432/resumebuilder
+---
+
+# App-Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: resume-builder
+  name: resume-builder-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:  
+      app: resume-builder-app
+  template:
+    metadata:
+      labels:
+        app: resume-builder-app
+    spec:
+      containers:
+      - name: resume-builder-app
+        image: shiru99/resume-builder
+        resources:
+          limits:
+            memory: 1Gi
+            cpu: "0.8"
+        imagePullPolicy: IfNotPresent
+        ports:
+        - protocol: TCP
+          containerPort: 8080
+        env:
+        - name: SPRING_DATASOURCE_URL
+          valueFrom: 
+            configMapKeyRef:
+              name: app-configmap
+              key: database_url
+        - name: SPRING_DATASOURCE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: db-secretes
+              key: db-username
+        - name: SPRING_DATASOURCE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secretes
+              key: db-password
+---
+
+# App-Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-service
+spec:
+  selector: 
+    app: resume-builder-app
+  # type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+
+# App-Ingress
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: resume-builder-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+    - host: resume-builder.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: app-service
+                port:
+                  number: 8080
+---
