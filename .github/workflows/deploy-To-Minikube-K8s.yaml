@@ -23,9 +23,9 @@ jobs:
         run: |
           export SHELL=/bin/bash
           eval $(minikube -p minikube docker-env)
-          docker build . --file Dockerfile -t shiru99/resume-builder:latest -t shiru99/resume-builder:$(date +%s)-$${{ github.run_number }}
+          docker build . --file Dockerfile -t shiru99/resume-builder:latest -t shiru99/resume-builder:${{github.run_number}}
           docker push shiru99/resume-builder:latest
-          docker push shiru99/resume-builder:$(date +%s)-$${{ github.run_number }}
+          docker push shiru99/resume-builder:${{github.run_number}}
       - name: Minikube setup
         run: |
           minikube addons enable ingress
