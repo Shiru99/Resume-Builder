@@ -34,4 +34,5 @@ jobs:
         run: |
           kubectl get all
           kubectl get ingress
-          # curl -Is http://resume-builder.dev/
+          kubectl port-forward service/app-service 9999:8080
+          curl -Is http://localhost:9999//
