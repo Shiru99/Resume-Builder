@@ -25,6 +25,7 @@ jobs:
         run: |
           minikube addons enable ingress
           echo "$(minikube ip) resume-builder.dev" | sudo tee -a /etc/hosts
+          kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
       - name: Deploy to Minikube
         run: |
           kubectl apply -f k8s/db-manifest.yaml
