@@ -24,3 +24,9 @@ hs_err_pid*
 
 /assets/Original/
 /assets/Compressed/
+
+# ignore tls crt
+tls.*
+
+.vscode/
+.settings/
