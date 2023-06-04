@@ -13,9 +13,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Start Minikube
         uses: medyagh/setup-minikube@master
-      - name: Try the cluster!
-        run: kubectl get pods -A
-      - name: Build image
+      - name: Build docker image
         run: |
           export SHELL=/bin/bash
           eval $(minikube -p minikube docker-env)
@@ -26,14 +24,14 @@ jobs:
           minikube addons enable ingress
           echo "$(minikube ip) resume-builder.dev" | sudo tee -a /etc/hosts
           kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
-      - name: Deploy to Minikube
+          kubectl get pods -A
+      - name: Deploy application to K8s cluster i.e. Minikube
         run: |
           kubectl apply -f k8s/db-manifest.yaml
           kubectl apply -f k8s/app-manifest.yaml
-      - name: Test service URLs
-        run: |
           sleep 120
+      - name: Test application
+        run: |
           kubectl get all
           kubectl get ingress
-          kubectl port-forward service/app-service 9999:8080
-          curl -Is http://localhost:9999//
+          curl -Is http://resume-builder.dev/
