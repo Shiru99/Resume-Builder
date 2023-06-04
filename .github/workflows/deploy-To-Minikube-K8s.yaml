@@ -22,11 +22,11 @@ jobs:
           docker build -f ./Dockerfile -t shiru99/resume-builder:latest .
           docker images
       - name: Minikube setup
-        run:
+        run: |
           minikube addons enable ingress
           echo "$(minikube ip) resume-builder.dev" | sudo tee -a /etc/hosts
       - name: Deploy to Minikube
-        run:
+        run: |
           kubectl apply -f k8s/db-manifest.yaml
           kubectl apply -f k8s/app-manifest.yaml
       - name: Test service URLs
