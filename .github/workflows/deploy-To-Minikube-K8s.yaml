@@ -32,8 +32,13 @@ jobs:
           kubectl apply -f k8s/app-manifest.yaml
       - name: Test service URLs
         run: |
-          minikube ip
+          kubectl get pods -n ingress-nginx
+          kubectl get services
           kubectl get ingress
+          sleep 30
+          kubectl get services
+          kubectl get ingress
+          minikube ip
           cat /etc/hosts
           
           # curl -Is http://resume-builder.dev/
