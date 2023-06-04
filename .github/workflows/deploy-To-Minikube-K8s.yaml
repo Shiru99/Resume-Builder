@@ -19,10 +19,10 @@ jobs:
           eval $(minikube -p minikube docker-env)
           docker build -f ./Dockerfile -t shiru99/resume-builder:latest .
           docker images
-          echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u shiru99 --password-stdin
-          docker tag shiru99/resume-builder:latest shiru99/resume-builder:${{ github.run_number }}
+          echo $${{ secrets.DOCKER_PASSWORD }} | docker login -u shiru99 --password-stdin
+          docker tag shiru99/resume-builder:latest shiru99/resume-builder:$${{ github.run_number }}
           docker push shiru99/resume-builder:latest
-          docker push shiru99/resume-builder:${{ github.run_number }}
+          docker push shiru99/resume-builder:$${{ github.run_number }}
       - name: Minikube setup
         run: |
           minikube addons enable ingress
