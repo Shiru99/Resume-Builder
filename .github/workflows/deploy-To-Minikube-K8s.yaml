@@ -1,0 +1,34 @@
+name: Deploy to Minikube (K8s) using GitHub Actions
+
+on:
+  push:
+    branches:
+      - minikube-k8s
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    name: Build application docker image and deploy to Minikube
+    steps:
+      - uses: actions/checkout@v2
+      - name: Start Minikube
+        uses: medyagh/setup-minikube@master
+      - name: Try the cluster!
+        run: kubectl get pods -A
+      - name: Build image
+        run: |
+          export SHELL=/bin/bash
+          eval $(minikube -p minikube docker-env)
+          docker build -f ./Dockerfile -t shiru99/resume-builder:latest .
+          docker images
+      - name: Minikube setup
+        run:
+          minikube addons enable ingress
+          echo "$(minikube ip) resume-builder.dev" | sudo tee -a /etc/hosts
+      - name: Deploy to Minikube
+        run:
+          kubectl apply -f k8s/db-manifest.yaml
+          kubectl apply -f k8s/app-manifest.yaml
+      - name: Test service URLs
+        run: |
+          curl -Is http://resume-builder.dev/
