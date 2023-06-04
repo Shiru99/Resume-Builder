@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
       - name: resume-builder-app
-        image: shiru99/resume-builder
+        image: shiru99/resume-builder:latest
         resources:
           limits:
             memory: 1Gi

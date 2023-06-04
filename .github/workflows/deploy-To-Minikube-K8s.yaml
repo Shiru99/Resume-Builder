@@ -18,7 +18,13 @@ jobs:
           export SHELL=/bin/bash
           eval $(minikube -p minikube docker-env)
           docker build -f ./Dockerfile -t shiru99/resume-builder:latest .
+      - name: Push docker image to DockerHub
+        run: |
           docker images
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker tag shiru99/resume-builder:latest shiru99/resume-builder:${{ github.run_number }}
+          docker push shiru99/resume-builder:latest
+          docker push shiru99/resume-builder:${{ github.run_number }}
       - name: Minikube setup
         run: |
           minikube addons enable ingress
