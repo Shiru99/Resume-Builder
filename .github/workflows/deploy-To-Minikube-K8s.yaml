@@ -13,15 +13,13 @@ jobs:
       - uses: actions/checkout@v2
       - name: Start Minikube
         uses: medyagh/setup-minikube@master
-      - name: Build docker image
+      - name: Build docker image & Push it to DockerHub
         run: |
           export SHELL=/bin/bash
           eval $(minikube -p minikube docker-env)
           docker build -f ./Dockerfile -t shiru99/resume-builder:latest .
-      - name: Push docker image to DockerHub
-        run: |
           docker images
-          docker login -u shiru99 -p ${{ secrets.DOCKER_PASSWORD }}
+          docker login -u shiru99 -p ${{ secrets.DOCKER_PASSWORD }} --password-stdin
           docker tag shiru99/resume-builder:latest shiru99/resume-builder:${{ github.run_number }}
           docker push shiru99/resume-builder:latest
           docker push shiru99/resume-builder:${{ github.run_number }}
